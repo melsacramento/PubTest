@@ -4,6 +4,3 @@ services:
 
   alpine:
     image: alpine
-    
-  nginx:
-    image: nginx
