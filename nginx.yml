@@ -4,3 +4,6 @@ services:
 
   nginx:
     image: nginx
+    
+  hello-world:
+    image: hello-world
