@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: kubenginx
+  name: kubenginxmodified
 spec:
   containers:
   - name: nginx
