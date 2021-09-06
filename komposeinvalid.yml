@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersionss: v1
 kind: Pod
 metadata:
   name: kubenginx-invalid
