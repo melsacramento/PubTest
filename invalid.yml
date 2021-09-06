@@ -1,4 +1,4 @@
-version: 'a'
+version: '3'
 services:
    nginx-invalid:
     image: nginx
