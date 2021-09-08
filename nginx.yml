@@ -2,5 +2,5 @@ version: '3'
 
 services:
 
-  public-nginx-modified:
+  public-nginx:
     image: nginx
