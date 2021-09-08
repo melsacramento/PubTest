@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment-for-kube-webhook
+  name: nginx-deployment-for-kube
   labels:
     app: nginx
 spec:
