@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment-for-kubernetesssss
+  name: nginx-deployment-for-polling
   labels:
     app: nginx
 spec:
