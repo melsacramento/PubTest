@@ -5,6 +5,6 @@ metadata:
 spec:
   containers:
   - name: hello-world
-    image: nginx:alpine
+    image: hello-world
     ports:
     - containerPort: 80
