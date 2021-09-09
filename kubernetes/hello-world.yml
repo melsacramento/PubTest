@@ -3,6 +3,7 @@ kind: Pod
 metadata:
   name: hello-world
 spec:
+  replicas: 3
   containers:
   - name: hello-world
     image: nginx
