@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: pods
+kind: deployment
 metadata:
   name: nginx-deployment
   labels:
