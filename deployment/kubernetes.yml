@@ -82,7 +82,7 @@ spec:
       targetPort: 9443
       protocol: TCP
       name: https
-      nodeport: 9443
+      nodePort: 9443
   selector:
     app.kubernetes.io/name: portainer
     app.kubernetes.io/instance: portainer
