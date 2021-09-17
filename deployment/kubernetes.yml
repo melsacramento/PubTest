@@ -141,12 +141,4 @@ spec:
               path: /
               port: 9000
           resources:
-             httpsGet:
-              path: /
-              port: 9443
-          readinessProbe:
-            httpsGet:
-              path: /
-              port: 9443
-          resources:
             {}
