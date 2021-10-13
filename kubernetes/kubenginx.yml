@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: nginx-public
-        image: nginx
+        image: nginx:1.14
         ports:
         - containerPort: 80
