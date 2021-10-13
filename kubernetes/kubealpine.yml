@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: alpine-for-test
+  name: nginx-deploy
 spec:
   containers:
-  - name: alpine
-    image: alpine
+  - name: nginx-test
+    image: nginx
     ports:
     - containerPort: 80
