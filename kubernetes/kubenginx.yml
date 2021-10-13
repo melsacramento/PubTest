@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: nginx-public
-        image: mongo
+        image: nginx
         ports:
         - containerPort: 80
