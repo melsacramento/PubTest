@@ -1,0 +1,4 @@
+version: '3'
+services:
+  swarm-deploy:
+    image: nginx
