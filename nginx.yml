@@ -4,4 +4,3 @@ services:
 
   public-nginx:
     image: nginx
-volumes: /test
