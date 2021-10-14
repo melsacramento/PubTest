@@ -2,4 +2,4 @@ version: '3'
 services:
   swarm-deploy:
     image: nginx
-    replicas: 2
+    replica: 2
