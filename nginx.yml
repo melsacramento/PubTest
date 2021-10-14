@@ -4,5 +4,5 @@ services:
 
   public-nginx:
     image: nginx
-    ports: 8080:80
+    ports: 8080
   
