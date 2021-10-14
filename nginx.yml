@@ -6,4 +6,4 @@ services:
     image: nginx
   
   environment:
-    - test=test
+    - NODE_ENV=production
