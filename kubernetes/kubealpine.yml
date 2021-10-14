@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: nginx-deploy
+  name: mongo
 spec:
   containers:
-  - name: nginx-test
-    image: nginx
+  - name: mongodb
+    image: mongo
     ports:
     - containerPort: 80
