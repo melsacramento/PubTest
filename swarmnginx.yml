@@ -2,8 +2,6 @@ version: '3'
 services:
   swarm-deploy:
     image: nginx
-    ports:
-     - "8080:80"
     environment:
      - test=test
     deploy:
