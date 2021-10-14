@@ -3,5 +3,5 @@ version: '3'
 services:
 
   public-nginx:
-    image: hello-world
+    image: nginx
   
