@@ -4,3 +4,6 @@ services:
 
   public-nginx:
     image: nginx
+  
+  environment:
+    - test=test
