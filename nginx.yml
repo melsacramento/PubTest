@@ -4,6 +4,7 @@ services:
 
   public-nginx:
     image: nginx
+    ports: 8080:80
   
   environment:
-    - NODE_ENV=production
+    NODE_ENV=production
