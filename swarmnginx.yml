@@ -1,7 +1,7 @@
 version: '3'
 services:
   swarm-deploy:
-    image: nginx
+    image: image
     environment:
      - test=test
     deploy:
