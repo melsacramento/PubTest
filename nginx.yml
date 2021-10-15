@@ -4,4 +4,4 @@ services:
 
   public-nginx:
     image: nginx:latest
-    container_name: nginx-container
+    container_name: nginx-container-rename
