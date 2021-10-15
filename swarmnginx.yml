@@ -5,4 +5,4 @@ services:
     environment:
      - test=test
     deploy:
-     replicas: 1
+     replicas: 2
