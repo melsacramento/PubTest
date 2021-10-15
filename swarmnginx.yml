@@ -2,6 +2,7 @@ version: '3'
 services:
   swarm-deploy:
     image: nginx
+    container_name: nginx-container
     environment:
      - test=test
     deploy:
