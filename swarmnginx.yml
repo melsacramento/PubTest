@@ -6,4 +6,4 @@ services:
     environment:
      - test=test
     deploy:
-     replicas: 2
+     replicas: 1
