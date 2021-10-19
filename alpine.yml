@@ -4,4 +4,4 @@ services:
 
   mongodb:
     image: mongo
-    container_name: mongo_test
+    container_name: mongo-remodified
