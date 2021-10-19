@@ -15,7 +15,7 @@ spec:
         app: nginx
     spec:
       containers:
-      - name: nginx-public
+      - name: nginx-modified
         image: nginx:latest
         ports:
         - containerPort: 80
