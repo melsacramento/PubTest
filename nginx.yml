@@ -2,6 +2,6 @@ version: '3'
 
 services:
 
-  public-nginx-modified:
+  nginx:
     image: nginx:latest
     container_name: nginx-remodified
