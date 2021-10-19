@@ -15,7 +15,7 @@ spec:
         app: mongo
     spec:
       containers:
-      - name: mongo-db
+      - name: mongo-db-modified
         image: mongo:latest
         ports:
         - containerPort: 80
