@@ -2,6 +2,6 @@ version: '3'
 
 services:
 
-  nginx-modified:
-    image: nginx:latest
+  nginx:
+    image: mongo
     container_name: nginx-modified
