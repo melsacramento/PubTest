@@ -4,4 +4,4 @@ services:
 
   nginx:
     image: nginx:latest
-    container_name: nginx-modified-again
+    container_name: nginx
