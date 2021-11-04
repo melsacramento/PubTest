@@ -50,9 +50,9 @@ main() {
     error "Usage: ${0} <EDGE_ID> <EDGE_KEY> <EDGE_INSECURE_POLL:optional>"
     exit 1
   fi
-
   
-  
+  local EDGE_ID="$1"
+  local EDGE_KEY="$2"
   local EDGE_INSECURE_POLL="$3"
 
   [[ "$(command -v curl)" ]] || errorAndExit "Unable to find curl binary. Please ensure curl is installed before running this script."
