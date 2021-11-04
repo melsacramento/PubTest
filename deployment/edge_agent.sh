@@ -51,7 +51,7 @@ main() {
     exit 1
   fi
 
-  local EDGE_ID="$1"
+  
   local EDGE_KEY="$2"
   local EDGE_INSECURE_POLL="$3"
 
