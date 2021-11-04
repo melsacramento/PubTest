@@ -52,7 +52,7 @@ main() {
   fi
 
   
-  local EDGE_KEY="$2"
+  
   local EDGE_INSECURE_POLL="$3"
 
   [[ "$(command -v curl)" ]] || errorAndExit "Unable to find curl binary. Please ensure curl is installed before running this script."
