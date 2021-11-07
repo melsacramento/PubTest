@@ -1,22 +1,10 @@
 apiVersion: v1
-kind: PersistentVolume
+kind: PersistentVolumeClaim
 metadata:
-  name: example-pv
+  name: postgres-pv-claim
 spec:
-  capacity:
-    storage: 10Gi
-  volumeMode: Filesystem
   accessModes:
-  - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Delete
-  storageClassName: local-storage
-  local:
-    path: /mnt/disks/ssd1
-  nodeAffinity:
-    required:
-      nodeSelectorTerms:
-      - matchExpressions:
-        - key: kubernetes.io/hostname
-          operator: In
-          values:
-          - example-node
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
