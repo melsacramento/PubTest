@@ -1,0 +1,9 @@
+ersion: "3"
+services:
+  nginx:
+    image: nginx
+    container_name: nginx-storage-test
+    volumes:
+      - /home:/test
+volumes:
+  nginx_data:
