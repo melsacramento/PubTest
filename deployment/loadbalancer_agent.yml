@@ -9,7 +9,7 @@ metadata:
   name: portainer-sa-clusteradmin
   namespace: portainer
 ---
-apiVersion: rbac.authorization.k8s.io/v1
+apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: ClusterRoleBinding
 metadata:
   name: portainer-crb-clusteradmin
@@ -25,18 +25,17 @@ subjects:
 apiVersion: v1
 kind: Service
 metadata:
-  name: portainer-agent2
+  name: portainer-agent
   namespace: portainer
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
-    app: portainer-agent2
+    app: portainer-agent
   ports:
     - name: http
       protocol: TCP
       port: 9001
       targetPort: 9001
-      nodePort: 30778
 ---
 apiVersion: v1
 kind: Service
@@ -46,25 +45,25 @@ metadata:
 spec:
   clusterIP: None
   selector:
-    app: portainer-agent2
+    app: portainer-agent
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: portainer-agent2
+  name: portainer-agent
   namespace: portainer
 spec:
   selector:
     matchLabels:
-      app: portainer-agent2
+      app: portainer-agent
   template:
     metadata:
       labels:
-        app: portainer-agent2
+        app: portainer-agent
     spec:
       serviceAccountName: portainer-sa-clusteradmin
       containers:
-      - name: portainer-agent2
+      - name: portainer-agent
         image: portainerci/agent:2.10
         imagePullPolicy: Always
         env:
