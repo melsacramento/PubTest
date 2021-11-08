@@ -53,7 +53,6 @@ main() {
 
   local EDGE_ID="$1"
   local EDGE_KEY="$2"
-  local EDGE_INSECURE_POLL="$3"
 
   [[ "$(command -v curl)" ]] || errorAndExit "Unable to find curl binary. Please ensure curl is installed before running this script."
   [[ "$(command -v microk8s kubectl)" ]] || errorAndExit "Unable to find kubectl binary. Please ensure kubectl is installed before running this script."
