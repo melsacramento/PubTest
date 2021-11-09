@@ -63,7 +63,7 @@ spec:
     spec:
       serviceAccountName: portainer-sa-clusteradmin
       containers:
-      - name: portainer-agent
+      - name: portainer-agent2
         image: portainerci/agent:2.10
         imagePullPolicy: Always
         env:
