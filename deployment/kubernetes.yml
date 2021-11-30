@@ -121,7 +121,7 @@ spec:
              claimName: portainer      
       containers:
         - name: portainer
-          image: "portainerci/portainer-ee:develop"
+          image: "portainerci/portainer-ee:pr968"
           imagePullPolicy: Always
           args:  [ '--tunnel-port','30776' ]          
           volumeMounts:
