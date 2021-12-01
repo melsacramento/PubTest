@@ -3,5 +3,5 @@ version: '3'
 services:
 
   nginx:
-    image: nginx
+    image: alpine
     container_name: nginx-modify
