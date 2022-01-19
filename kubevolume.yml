@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: mynginxclaim
 spec:
-  storageClassName: "oci-bv"
+  storageClassName: "default"
   accessModes:
     - ReadWriteOnce
   resources:
