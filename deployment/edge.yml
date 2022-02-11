@@ -78,6 +78,8 @@ spec:
               value: "1"
             - name: AGENT_CLUSTER_ADDR
               value: "portainer-agent"
+            - name: EDGE_TUNNEL
+              value: "0"
             - name: EDGE_ID
               valueFrom:
                 configMapKeyRef:
