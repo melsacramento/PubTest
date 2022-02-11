@@ -65,7 +65,7 @@ spec:
       serviceAccountName: portainer-sa-clusteradmin
       containers:
         - name: portainer-edge-agent
-          image: portainerci/agent:develop
+          image: portainerci/agent:pr230
           imagePullPolicy: Always
           env:
             - name: LOG_LEVEL
@@ -78,6 +78,8 @@ spec:
               value: "1"
             - name: AGENT_CLUSTER_ADDR
               value: "portainer-agent"
+            - name: EDGE_TUNNEL
+              value: "0"
             - name: EDGE_ID
               valueFrom:
                 configMapKeyRef:
