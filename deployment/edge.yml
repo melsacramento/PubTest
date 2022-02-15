@@ -95,6 +95,11 @@ spec:
                 secretKeyRef:
                   name: portainer-agent-edge-key
                   key: edge.key
+            ###tmp
+            envFrom:
+            - configMapRef:
+                name: portainer-agent-edge
+           ###
           ports:
             - containerPort: 9001
               protocol: TCP
