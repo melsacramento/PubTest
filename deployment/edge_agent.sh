@@ -66,7 +66,18 @@ main() {
 
   info "Creating agent configuration..."
   microk8s kubectl create configmap portainer-agent-edge --from-literal="edge.id=$EDGE_ID" --from-literal="edge.insecure_poll=$EDGE_INSECURE_POLL"  -n portainer
-
+  
+  ###TEMP
+  env_array=(${ENV_SOURCE//,/ })
+  for env in "${env_array[@]}"
+  do
+    tmp=" --from-literal=$env="
+    cmd=$cmd$tmp
+  done
+  ###TEMP
+  
+  eval $cmd || errorAndExit "Unable to create agent configuration"
+  
   info "Creating agent secret..."
   microk8s kubectl create secret generic portainer-agent-edge-key "--from-literal=edge.key=$EDGE_KEY" -n portainer
 
