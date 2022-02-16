@@ -1,8 +1,7 @@
-version: "3.9"
+version: '3'
 services:
-  web:
-    build: .
-    ports:
-      - "5000:5000"
-  redis:
-    image: "redis:alpine"
+ nginx:
+  image: nginx:${VAR}
+  environment:
+   - hello=${VAR2}
+   - idk=${VAR}
