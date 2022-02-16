@@ -59,7 +59,8 @@ main() {
   [[ "$(command -v microk8s kubectl)" ]] || errorAndExit "Unable to find kubectl binary. Please ensure kubectl is installed before running this script."
 
   info "Downloading agent manifest..."
-  curl -L https://raw.githubusercontent.com/melsacramento/PubTest/main/deployment/portainer-agent-edge-k8s.yaml -o portainer-agent-edge-k8s.yaml || errorAndExit "Unable to download agent manifest"
+  ###curl -L https://raw.githubusercontent.com/melsacramento/PubTest/main/deployment/portainer-agent-edge-k8s.yaml -o portainer-agent-edge-k8s.yaml || errorAndExit "Unable to download agent manifest"
+  curl -L https://raw.githubusercontent.com/portainer/k8s/4439f8adfc3643be35dc65001c294591bac79703/deploy/manifests/agent/portainer-ce211-agent-edge-k8s.yaml -o portainer-agent-edge-k8s.yaml || errorAndExit "Unable to download agent manifest"
 
   info "Creating Portainer namespace..."
   microk8s kubectl create namespace portainer
