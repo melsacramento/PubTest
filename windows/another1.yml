@@ -1,7 +1,7 @@
 version: '3'
 services:
   svc1:
-    image: mongo
+    image: hello-world
     ports:
       - 1111:1111
   svc2:
