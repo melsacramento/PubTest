@@ -3,7 +3,7 @@ services:
   svc1:
     image: hello-world
     ports:
-      - 1111:1111
+      - 1212:1111
   svc2:
     image: hello-world
     ports:
