@@ -3,4 +3,4 @@ version: '3'
 services:
 
   nginx:
-    image: nginx:2.1.1
+    image: nginx:1.12.0
