@@ -5,6 +5,8 @@ services:
     ports:
       - 1111:1111
   svc2:
-    image: nginx
+    image: alpine
     ports:
       - 2222:2222
+    stdin_open: true
+    tty: true
