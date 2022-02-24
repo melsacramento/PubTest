@@ -2,5 +2,7 @@ version: '3'
 
 services:
 
-  mongodb:
+  alpine:
     image: alpine
+    stdin_open: true
+    tty: true
