@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: mongo:latest
+        image: nginx:latest
         ports:
         - containerPort: 80
