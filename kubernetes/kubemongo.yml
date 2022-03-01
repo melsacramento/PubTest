@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: mongo-db-modified
-        image: mongo:latest
+        image: nginx:latest
         ports:
         - containerPort: 80
