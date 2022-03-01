@@ -3,7 +3,7 @@ services:
  app:
   image: nginx
   deploy:
-  resources:
-   limits:
-    cpus: '0.5'
-    memory: 50M
+   resources:
+    limits:
+     cpus: '0.5'
+     memory: 50M
