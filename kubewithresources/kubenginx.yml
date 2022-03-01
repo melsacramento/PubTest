@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: nginx-resources
-        image: mongo:latest
+        image: nginx:latest
         ports:
         - containerPort: 80
         resources:
