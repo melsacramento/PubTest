@@ -1,7 +1,7 @@
 version: '3'
 services:
  nginx-app:
-  image: mongo:latest
+  image: alpine:latest
   tty: true
   stdin_open: true
   deploy:
