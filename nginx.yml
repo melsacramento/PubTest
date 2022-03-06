@@ -3,4 +3,4 @@ version: '3'
 services:
 
   nginx:
-    image: 6261998/nginx:linux
+    image: 6261998/priv:linux
