@@ -8,6 +8,6 @@ services:
     stdin_open: true
     ports:
      - 8080:80
-    environments:
+    environment:
      - test=hello
     
