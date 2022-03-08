@@ -3,6 +3,11 @@ version: '3'
 services:
 
   nginx:
-    image: alpine:latest
+    image: nginx
     tty: true
     stdin_open: true
+    ports:
+     - 8080:80
+    environments:
+     - test=hello
+    
