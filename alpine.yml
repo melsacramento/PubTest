@@ -6,3 +6,5 @@ services:
     image: alpine
     stdin_open: true
     tty: true
+ ports:
+  - 8080:80
