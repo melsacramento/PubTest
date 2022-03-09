@@ -3,6 +3,6 @@ version: '3'
 services:
 
   nginx:
-    image: nginx:latest
+    image: mongo:latest
     tty: true
     stdin_open: true
