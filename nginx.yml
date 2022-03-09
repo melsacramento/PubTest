@@ -8,5 +8,4 @@ services:
     stdin_open: true
     environment:
      - test=hello
-     - emotional=damage
     
