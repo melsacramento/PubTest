@@ -3,6 +3,6 @@ version: '3'
 services:
 
   nginx:
-    image: alpine:latest
+    image: nginx.yml
     tty: true
     stdin_open: true
