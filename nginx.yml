@@ -9,5 +9,3 @@ services:
     environment:
      - test=hello
      - emotional=damage
-    ports:
-     - 8080:80
