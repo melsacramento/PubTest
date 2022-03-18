@@ -1,4 +1,4 @@
-job "demo" {
+job "nginx-public-repo" {
   datacenters = ["dc1"]
 
   namespace = "default"
