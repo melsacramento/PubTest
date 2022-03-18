@@ -11,8 +11,8 @@ job "demo" {
 
     network {
       port "db" {
-        static = 6379
-        to = 6379
+        static = 80
+        to = 8080
       }
     }
 
