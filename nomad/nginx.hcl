@@ -11,8 +11,8 @@ job "nginx-public-repo" {
 
     network {
       port "db" {
-        static = 80
-        to = 8080
+        static = 8080
+        to = 80
       }
     }
 
