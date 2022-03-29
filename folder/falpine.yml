@@ -4,3 +4,5 @@ services:
 
   alpine:
     image: alpine
+    tty: true
+    std_open: true
