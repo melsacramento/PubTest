@@ -3,4 +3,6 @@ version: '2'
 services:
 
   alpine:
-    image: alpine
+    image: alpine:latest
+    tty: true
+    stdin_open: true
