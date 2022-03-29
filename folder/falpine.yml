@@ -5,4 +5,4 @@ services:
   alpine:
     image: alpine
     tty: true
-    std_open: true
+    stdin_open: true
