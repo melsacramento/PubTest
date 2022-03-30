@@ -1,12 +1,6 @@
 version: '3'
 services:
-  svc1:
-    image: nginx
-    ports:
-      - 1111:1111
-  svc2:
-    image: alpine
-    ports:
-      - 2222:2222
-    stdin_open: true
-    tty: true
+ alpine-6261998:
+  image: 62619998/alpine:test
+  tty: true
+  stdin_open: true
