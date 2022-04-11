@@ -7,5 +7,4 @@ services:
     tty: true
     stdin_open: true
     environment:
-     - wub=alabadabdab
-     - slurp=itup
+     - idk=idk
