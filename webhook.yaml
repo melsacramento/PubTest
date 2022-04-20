@@ -4,3 +4,4 @@ services:
   image: nginx:latest
   environment:
    - idk = idk
+   - wub = labadabdab
