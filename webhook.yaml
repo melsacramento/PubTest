@@ -2,3 +2,5 @@ version: '3'
 services:
  webhook-env:
   image: alpine:latest
+  tty: true
+  stdin_open: true
