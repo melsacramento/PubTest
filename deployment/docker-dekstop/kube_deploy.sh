@@ -62,16 +62,16 @@ main() {
   curl -L https://raw.githubusercontent.com/melsacramento/PubTest/main/deployment/docker-dekstop/kube_script.yaml -o portainer-agent-edge-k8s.yaml || errorAndExit "Unable to download agent manifest"
 
   info "Creating Portainer namespace..."
-  microk8s kubectl create namespace portainer
+  kubectl create namespace portainer
 
   info "Creating agent configuration..."
-  microk8s kubectl create configmap portainer-agent-edge --from-literal="edge.id=$EDGE_ID" --from-literal="edge.insecure_poll=$EDGE_INSECURE_POLL"  -n portainer
+  kubectl create configmap portainer-agent-edge --from-literal="edge.id=$EDGE_ID" --from-literal="edge.insecure_poll=$EDGE_INSECURE_POLL"  -n portainer
 
   info "Creating agent secret..."
-  microk8s kubectl create secret generic portainer-agent-edge-key "--from-literal=edge.key=$EDGE_KEY" -n portainer
+  kubectl create secret generic portainer-agent-edge-key "--from-literal=edge.key=$EDGE_KEY" -n portainer
 
   info "Deploying agent..."
-  microk8s  kubectl apply -f portainer-agent-edge-k8s.yaml || errorAndExit "Unable to deploy agent manifest"
+  kubectl apply -f portainer-agent-edge-k8s.yaml || errorAndExit "Unable to deploy agent manifest"
 
   success "Portainer Edge agent successfully deployed"
   exit 0
