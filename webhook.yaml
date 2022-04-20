@@ -1,7 +1,4 @@
 version: '3'
 services:
  webhook-env:
-  image: nginx:latest
-  environment:
-   - idk = idk
-   - wub = labadabdab
+  image: alpine:latest
