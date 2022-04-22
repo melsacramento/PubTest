@@ -4,5 +4,3 @@ services:
   image: alpine
   tty: true
   stdin_open: true
-  env_file:
-   - env.env
