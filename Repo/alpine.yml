@@ -2,6 +2,7 @@ version: '3'
 services:
   nginx-container:
     image: nginx:latest
+    container_name: env-test-container
     ports:
       - "${PORT:-81}:80"
     environment:
