@@ -4,3 +4,5 @@ services:
     image: alpine
     environment:
      - hello=${IMG}
+    env_file:
+     - .env
