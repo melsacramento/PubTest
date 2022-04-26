@@ -7,5 +7,3 @@ services:
       - "${PORT:-81}:80"
     environment:
       PRT: ${PORT}
-    env_file
-     - .env
