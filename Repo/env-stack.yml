@@ -5,4 +5,4 @@ services:
     environment:
       VAR1: ${IMG}
     env_file:
-     - ./Repo/.env
+     - ./Repo/test.env
