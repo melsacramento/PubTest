@@ -69,7 +69,7 @@ main() {
     [[ "$(command -v grep)" ]] || errorAndExit "Unable to find grep binary. Please ensure grep is installed before running this script."
 
     info "Downloading agent job spec..."
-    curl -L https://downloads.portainer.io/ee2-13/portainer-agent-edge-nomad.hcl -o $job_file_name || errorAndExit "Unable to download agent jobspec"
+    curl -L https://raw.githubusercontent.com/melsacramento/PubTest/main/deployment/nomad/nomad.hcl -o $job_file_name || errorAndExit "Unable to download agent jobspec"
 
     # if env vars is a valid string, try to append them to env section in the agent job file
     if [ ! -z "$ENV_VARS" ]; then
