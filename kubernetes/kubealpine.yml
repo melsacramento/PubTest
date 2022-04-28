@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: mongo
+  name: alpine
 spec:
   containers:
-  - name: mongodb
-    image: mongo
+  - name: alpine
+    image: alpine:latest
     ports:
     - containerPort: 80
