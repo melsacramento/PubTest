@@ -1,0 +1,6 @@
+version: '3'
+services:
+ azure-nginx:
+  image: portainertest.azurecr.io/nginx:melstag
+  tty: true
+  stdin_open: true
