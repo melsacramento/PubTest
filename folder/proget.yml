@@ -1,0 +1,6 @@
+version: '3'
+services:
+ proget-nginx:
+  image: proget.portainer.io/alapenna/library/nginx:normal
+  tty: true
+  stdin_open: true
