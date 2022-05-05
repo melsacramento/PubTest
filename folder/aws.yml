@@ -1,0 +1,6 @@
+version: '3'
+services:
+ acr-alpine:
+  image: 090831636769.dkr.ecr.us-east-1.amazonaws.com/private:matcha
+  tty: true
+  stdin_open: true
