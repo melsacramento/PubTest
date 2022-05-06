@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: private-docker
+  labels:
+    app: private-docker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: private-docker
+  template:
+    metadata:
+      labels:
+        app: private-docker
+    spec:
+      containers:
+      - name: private-docker
+        image: docker.io/6261998/priv:linux
+        ports:
+        - containerPort: 82
