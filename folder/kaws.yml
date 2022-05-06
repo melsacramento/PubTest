@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aws
+  labels:
+    app: aws
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aws
+  template:
+    metadata:
+      labels:
+        app: aws
+    spec:
+      containers:
+      - name: aws
+        image: 090831636769.dkr.ecr.us-east-1.amazonaws.com/private:ramen
+        ports:
+        - containerPort: 81
