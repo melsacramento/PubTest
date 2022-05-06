@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: azure
+  labels:
+    app: azure
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: azure
+  template:
+    metadata:
+      labels:
+        app: azure
+    spec:
+      containers:
+      - name: azure
+        image: portainertest.azurecr.io/nginx:melstag
+        ports:
+        - containerPort: 80
