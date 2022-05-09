@@ -3,5 +3,5 @@ services:
  nginx:
   image: nginx
   environment:
-   - foo={$var}
+   - foo=${var}
    - fighter=${var2}
