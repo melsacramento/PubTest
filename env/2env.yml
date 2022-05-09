@@ -1,0 +1,7 @@
+version: '3'
+services:
+ nginx:
+  image: nginx
+  environment:
+   - foo={$var}
+   - fighter=${var2}
