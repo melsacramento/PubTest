@@ -3,4 +3,4 @@ services:
  nginx:
   image: nginx
   environment:
-   - foo={$var}
+   - foo=${var}
