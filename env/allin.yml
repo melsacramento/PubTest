@@ -2,6 +2,8 @@ version: '3'
 services:
  nginx:
   image: ${IMAGE:-nginx:latest}
+  tty: true
+  stdin_open: true
   environment:
    - hello=${var}
    - hi=${var2}
