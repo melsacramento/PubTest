@@ -6,6 +6,3 @@ services:
     image: nginx:latest
     tty: true
     stdin_open: true
-    environment:
-     - idk=idk
-     - wub=labadabdab
