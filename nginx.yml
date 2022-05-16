@@ -8,3 +8,4 @@ services:
     stdin_open: true
     environment:
      - idk=idk
+     - wub=labadabdab
