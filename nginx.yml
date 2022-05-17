@@ -4,6 +4,6 @@ services:
 
   nginx:
     image: nginx:latest
-    container_name: engine-x
+    container_name: wub
     tty: true
     stdin_open: true
