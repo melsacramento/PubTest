@@ -4,6 +4,6 @@ services:
 
   nginx:
     image: nginx:latest
-    container_name: wubalabadabdab
+    container_name: morbintime
     tty: true
     stdin_open: true
