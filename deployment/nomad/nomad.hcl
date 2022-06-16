@@ -33,7 +33,7 @@ job "portainer-agent" {
       }
 
       config {
-        image = "portainerci/agent:pr333"
+        image = "portainerci/agent:2.14"
         force_pull = true
       }
     }
