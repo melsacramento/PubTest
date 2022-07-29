@@ -3,7 +3,7 @@ version: '3'
 services:
 
   nginx:
-    image: alpine
+    image: nginx
     tty: true
     stdin_open: true
     environment:
