@@ -7,3 +7,5 @@ services:
     container_name: wubalabadabdab
     tty: true
     stdin_open: true
+    environment:
+     - hello=hi
