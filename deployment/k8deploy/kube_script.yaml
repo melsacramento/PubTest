@@ -26,12 +26,12 @@ subjects:
 # apiVersion: v1
 # kind: Service
 # metadata:
-#   name: portainer-agent
+#   name: portainer-agent-priv
 #   namespace: portainer
 # spec:
 #   type: LoadBalancer
 #   selector:
-#     app: portainer-agent
+#     app: portainer-agent-priv
 #   ports:
 #     - name: http
 #       protocol: TCP
@@ -46,21 +46,21 @@ metadata:
 spec:
   clusterIP: None
   selector:
-    app: portainer-agent
+    app: portainer-agent-priv
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: portainer-agent
+  name: portainer-agent-priv
   namespace: portainer
 spec:
   selector:
     matchLabels:
-      app: portainer-agent
+      app: portainer-agent-priv
   template:
     metadata:
       labels:
-        app: portainer-agent
+        app: portainer-agent-priv
     spec:
       serviceAccountName: portainer-sa-clusteradmin
       containers:
