@@ -41,7 +41,7 @@ subjects:
 apiVersion: v1
 kind: Service
 metadata:
-  name: portainer-agent
+  name: portainer-agent-priv
   namespace: portainer
 spec:
   clusterIP: None
@@ -64,7 +64,7 @@ spec:
     spec:
       serviceAccountName: portainer-sa-clusteradmin
       containers:
-        - name: portainer-agent
+        - name: portainer-agent-priv
           image: portainerci/agent:2.15
           imagePullPolicy: Always
           env:
