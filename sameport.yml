@@ -2,5 +2,5 @@ version: '3'
 services:
  nginx:
   image: nginx
-  ports
+  ports:
   - 8080:80
