@@ -4,3 +4,5 @@ services:
   image: nats
   tty: true
   stdin_open: true
+  ports:
+   - 8080:80
