@@ -1,6 +1,0 @@
-version: '3'
-services:
- alpine-6261998:
-  image: 6261998/alpine:test
-  tty: true
-  stdin_open: true
