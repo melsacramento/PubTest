@@ -1,4 +1,4 @@
-
-  services:
+version: '3'
+services:
     test-build-image:
      build: ./
