@@ -2,4 +2,4 @@ version: '3'
 services:
     test-build-image:
      build: ./
-     pull_policy: always
+     pull_policy: build
