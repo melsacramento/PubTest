@@ -3,6 +3,6 @@ version: '3'
 services:
 
   alpine:
-    image: hello-world
+    image: alpine
     stdin_open: true
     tty: true

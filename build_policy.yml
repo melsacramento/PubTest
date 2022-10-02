@@ -1,0 +1,5 @@
+version: '3'
+services:
+ pull_policy:
+  image: nginx:latest
+  pull_policy: build

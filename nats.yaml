@@ -1,6 +1,8 @@
 version: '3'
 services:
- mongo:
-  image: mongo:latest
+ nasts-universal:
+  image: nats
   tty: true
   stdin_open: true
+  ports:
+   - 8080:80

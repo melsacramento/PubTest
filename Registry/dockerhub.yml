@@ -1,0 +1,6 @@
+version: '3'
+services:
+ regstry-alpine-dockerhub:
+  image: 6261998/f-update:beep
+  tty: true
+  stdin_open: true

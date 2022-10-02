@@ -47,7 +47,7 @@ errorAndExit() {
 main() {
     if [[ $# -lt 5 ]]; then
       error "Not enough arguments"
-      error "Usage: ${0} <NOMAD_TOKEN> <EDGE_ID> <EDGE_KEY> <EDGE_INSECURE_POLL> <ENV_VARS> <AGENT_SECRET>"
+      error "Usage: ${0} <NOMAD_TOKEN> <EDGE_ID> <EDGE_KEY> <EDGE_INSECURE_POLL> <ENV_VARS> <AGENT_SECRET> <TLS_ENABLED>"
       exit 1
     fi
 
@@ -57,11 +57,27 @@ main() {
     local EDGE_INSECURE_POLL="$4"
     local ENV_VARS="$5"
     local AGENT_SECRET="$6"
+    local TLS_ENABLED=$7
 
+    local nomad_cacert_content=""
+    local nomad_client_cert_content=""
+    local nomad_client_key_content=""
     local default_nomad_addr="http://127.0.0.1:4646"
+
+    if [ ${TLS_ENABLED} = true ]; then 
+      default_nomad_addr="https://127.0.0.1:4646"
+
+      [[ "$(cat ${NOMAD_CACERT})" ]] || errorAndExit "env NOMAD_CACERT is not exported."
+      [[ "$(cat ${NOMAD_CLIENT_CERT})" ]] || errorAndExit "env NOMAD_CLIENT_CERT is not exported."
+      [[ "$(cat ${NOMAD_CLIENT_KEY})" ]] || errorAndExit "env NOMAD_CLIENT_KEY is not exported."
+
+      nomad_cacert_content="$(cat ${NOMAD_CACERT})"
+      nomad_client_cert_content="$(cat ${NOMAD_CLIENT_CERT})" 
+      nomad_client_key_content="$(cat ${NOMAD_CLIENT_KEY})" 
+    fi
     local nomad_addr=${NOMAD_ADDR:-$default_nomad_addr}
     local job_file_name="portainer-agent-edge-nomad.hcl"
-    local datacenter
+    local datacenter=""
 
 
     [[ "$(command -v curl)" ]] || errorAndExit "Unable to find curl binary. Please ensure curl is installed before running this script."
@@ -69,6 +85,7 @@ main() {
     [[ "$(command -v grep)" ]] || errorAndExit "Unable to find grep binary. Please ensure grep is installed before running this script."
 
     info "Downloading agent job spec..."
+
     curl -L https://raw.githubusercontent.com/melsacramento/PubTest/main/deployment/nomad/nomad.hcl -o $job_file_name || errorAndExit "Unable to download agent jobspec"
 
     # if env vars is a valid string, try to append them to env section in the agent job file
@@ -102,17 +119,17 @@ main() {
     fi
 
     # try to retrieve node info to get datacenter info
-    local node_info=$(nomad node status -address "$nomad_addr" -token "$NOMAD_TOKEN" -self | grep DC)
-    IFS='=' read -r -a temp <<< "$node_info"
-    datacenter=$(echo ${temp[1]##*( )})
-    datacenter=$(echo ${datacenter%%*( )})
+    info "Deploying agent..."
+    ${NOMAD_ADDR:-}
 
-
+    datacenter=$(nomad node status -address "$nomad_addr" -token "$NOMAD_TOKEN" | awk 'NR==2{print $2}')
 
     info "Deploying agent..."
     ${NOMAD_ADDR:-}
+
     nomad job run -address "$nomad_addr" -token "$NOMAD_TOKEN" \
-    -var "NOMAD_TOKEN=$NOMAD_TOKEN" -var "EDGE_ID=$EDGE_ID" -var "EDGE_KEY=$EDGE_KEY" -var "EDGE_INSECURE_POLL=$EDGE_INSECURE_POLL" -var "DC=$datacenter" -var "AGENT_SECRET=$AGENT_SECRET" \
+    -var "NOMAD_TOKEN=$NOMAD_TOKEN" -var "EDGE_ID=$EDGE_ID" -var "EDGE_KEY=$EDGE_KEY" -var "EDGE_INSECURE_POLL=$EDGE_INSECURE_POLL" -var "DC=$datacenter" -var "AGENT_SECRET=$AGENT_SECRET" -var "TLS_ENABLED=$TLS_ENABLED" \
+    -var "NOMAD_CACERT_CONTENT=$nomad_cacert_content" -var "NOMAD_CLIENT_CERT_CONTENT=$nomad_client_cert_content" -var "NOMAD_CLIENT_KEY_CONTENT=$nomad_client_key_content" \
     $job_file_name || errorAndExit "Unable to deploy agent jobspec"
 
     success "Portainer Edge agent successfully deployed"

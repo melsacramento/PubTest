@@ -1,6 +1,0 @@
-version: '3'
-services:
- quay-nginx:
-  image: quay.io/portainer.io/nginx:qa
-  tty: true
-  stdin_open: true

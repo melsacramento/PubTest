@@ -1,6 +1,0 @@
-version: '3'
-services:
- gitlab-nginx:
-  image: registry.gitlab.com/6261998/registry/test:tag
-  tty: true
-  stdin_open: true
