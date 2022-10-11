@@ -8,4 +8,3 @@ services:
     stdin_open: true
     environment:
      - berries=banana
-     - wuba=labadabdab
