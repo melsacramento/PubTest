@@ -4,8 +4,7 @@ services:
   image: nats
   networks:
    - idk
-   
-// create an idk network  
+ 
 networks:
   idk:
     external: true
