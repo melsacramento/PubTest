@@ -98,7 +98,7 @@ main() {
     microk8s kubectl create secret generic portainer-agent-edge-key "--from-literal=edge.key=$EDGE_KEY" -n portainer
     
     info "Deploying agent..."
-    microk8s kubectl apply -f portainer-agent-edge-k8s.yaml || errorAndExit "Unable to deploy agent manifest"
+    microk8s kubectl apply -f https://raw.githubusercontent.com/melsacramento/PubTest/main/deployment/edge-devices/kube-deploy.yml || errorAndExit "Unable to deploy agent manifest"
     
     success "Portainer Edge agent successfully deployed"
     exit 0
