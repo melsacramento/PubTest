@@ -1,0 +1,4 @@
+version: '3'
+services:
+ azure:
+  image: portainertest.azurecr.io/nginx:melstag

@@ -1,0 +1,4 @@
+version: '3'
+services:
+ proget:
+  image: proget.portainer.io/qa-feed-1/nginx:test 
