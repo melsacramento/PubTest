@@ -1,4 +1,19 @@
-version: '3'
-services:
- proget:
-  image: proget.portainer.io/qa-feed-1/nginx:test 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: proget
+  labels:
+    app: proget
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: proget
+  template:
+    metadata:
+      labels:
+        app: proget
+    spec:
+      containers:
+      - name: proget
+        image: proget.portainer.io/qa-feed-1/nginx:test
