@@ -1,8 +1,9 @@
-version: '3'
+version: '3.1'
 services:
- extport:
-  image: nats
-  tty: true
-  stdin_open: true
- environment:
-  - test=test
+  webapp:
+    image: nginx:1.20.1
+    restart: always
+    ports:
+      - "${PORT:-3002}:80"
+    volumes:
+      - ./static:/usr/share/nginx/html
