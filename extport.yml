@@ -7,3 +7,5 @@ services:
       - "${PORT:-3002}:80"
     volumes:
       - ./static:/usr/share/nginx/html
+    tty: true
+    stdin_open: true
