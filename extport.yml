@@ -1,6 +1,8 @@
 version: '3'
 services:
  extport:
-  image: ${EXTPORT}
+  image: nats
   tty: true
   stdin_open: true
+ environment:
+  - ${EXTPORT}=test
