@@ -3,6 +3,6 @@ services:
   webapp:
     image: nginx:latest
     ports:
-      - "${PORT:-3004}:80"
+      - "${PORT:-3001}:80"
     tty: true
     stdin_open: true
