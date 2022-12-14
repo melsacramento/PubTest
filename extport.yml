@@ -6,3 +6,5 @@ services:
       - "${PORT:-3001}:80"
     tty: true
     stdin_open: true
+    environment:
+      - "${PINE:-laba}:dabdab"
