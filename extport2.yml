@@ -6,3 +6,5 @@ services:
       - "${PORT:-3003}:80"
     tty: true
     stdin_open: true
+    environment:
+      - "${TEXT:-wuba}:labadabdab"
