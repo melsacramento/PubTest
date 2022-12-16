@@ -6,4 +6,5 @@ services:
     image: 6261998/test:tag
     tty: true
     stdin_open: true
-
+  environment:
+    - banana=berries
