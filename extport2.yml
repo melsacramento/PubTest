@@ -8,3 +8,4 @@ services:
     stdin_open: true
     environment:
       - ${TEXT:-wuba}=labadabdab
+      - ${SAME:-bag}=labrador
