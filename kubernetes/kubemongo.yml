@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mongo
+  name: nats
   labels:
-    app: mongo
+    app: nats
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mongo
+      app: nats
   template:
     metadata:
       labels:
-        app: mongo
+        app: nats
     spec:
       containers:
-      - name: mongo-db-modified
-        image: nginx:latest
+      - name: nats
+        image: nats:latest
         ports:
-        - containerPort: 80
+        - containerPort: 90
