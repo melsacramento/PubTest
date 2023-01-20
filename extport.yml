@@ -3,7 +3,7 @@ services:
   webapp:
     image: nats:latest
     ports:
-      - "${PORTS:-3001}:91"
+      - "${PORTS:-3001}:81"
     tty: true
     stdin_open: true
     environment:
