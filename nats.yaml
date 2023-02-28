@@ -2,5 +2,8 @@ version: '3'
 services:
  nasts-universal:
   image: nats
+  environment:
+   - shaba=laba
+   - ruptiri=tiritiri
   tty: true
   stdin_open: true
