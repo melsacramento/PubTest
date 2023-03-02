@@ -1,0 +1,7 @@
+version: '3'
+services:
+ gitlab-app:
+  image: registry.gitlab.com/6261998/registry/nginx:git
+  tty: true
+  stdin_open: true
+  
