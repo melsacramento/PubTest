@@ -5,4 +5,4 @@ services:
   tty: true
   stdin_open: true
   environment:
-   - aws=updateviawebhook
+   - aws=updateviapolling
