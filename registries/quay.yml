@@ -3,4 +3,4 @@ services:
  quay:
   image: quay.io/portainer.io/nginx:latest
   environment:
-   - quay=updateviapolling
+   - quay=updateviawebhook
