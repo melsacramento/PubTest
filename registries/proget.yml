@@ -1,0 +1,6 @@
+version: '3'
+services:
+ proget-app:
+  image: proget.portainer.io/qa-feed-1/nginx:test
+  tty: true
+  stdin_open: true
