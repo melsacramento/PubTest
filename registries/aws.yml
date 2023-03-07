@@ -4,5 +4,7 @@ services:
   image: 090831636769.dkr.ecr.us-east-1.amazonaws.com/private:soba
   tty: true
   stdin_open: true
+  volumes:
+   - ./:/web
   environment:
    - aws=updateviawebhook
