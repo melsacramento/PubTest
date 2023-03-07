@@ -7,6 +7,6 @@ services:
   ports:
    - "8080:8080"
   volumes:
-   - ./:/web
+   - ../README.md:/web/README.md
   environment:
    - aws=updateviawebhook
