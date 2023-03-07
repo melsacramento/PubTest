@@ -4,6 +4,8 @@ services:
   image: 090831636769.dkr.ecr.us-east-1.amazonaws.com/private:fileserver
   tty: true
   stdin_open: true
+  ports:
+   - "8080:8080"
   volumes:
    - ./:/web
   environment:
