@@ -8,3 +8,5 @@ services:
    - incendio=expeleramus
    - spider=dog
    - dog=man
+   - mince=meat
+   - potion=health
