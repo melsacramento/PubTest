@@ -4,3 +4,7 @@ services:
   image: nats
   tty: true
   stdin_open: true
+  environment:
+   - incendio=expeleramus
+   - spider=dog
+   - dog=man
