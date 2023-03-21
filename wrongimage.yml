@@ -1,4 +1,0 @@
-version: '3'
-services:
- wrongimage:
-  image: 6261998/test:wi
