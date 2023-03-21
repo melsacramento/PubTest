@@ -2,5 +2,5 @@ version: '3'
 services:
  large-app:
   image: sagemathinc/cocalc
-  environment:
-   - gello=latin
+    volumes:
+     - ../README.md:/web/README.md
