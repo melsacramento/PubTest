@@ -1,6 +1,4 @@
 version: '3'
 services:
  large-app:
-  image: sagemathinc/cocalc
-    volumes:
-     - ../README.md:/web/README.md
+  image: 6261998/priv:cocalc
