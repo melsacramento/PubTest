@@ -7,4 +7,4 @@ services:
     stdin_open: true
     tty: true
     volumes:
-     - ../html:/home/alpha
+     - ./html:/home/alpha

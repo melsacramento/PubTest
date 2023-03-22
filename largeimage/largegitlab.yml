@@ -3,4 +3,4 @@ services:
  gitlab-largefile:
   image: registry.gitlab.com/6261998/priv/priv:cocalc
   volumes:
-   - ../html:/home/index
+   - ./html:/home/index
