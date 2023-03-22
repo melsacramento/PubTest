@@ -1,7 +1,7 @@
 version: '3'
 services:
  gitlab-app:
-  image: registry.gitlab.com/6261998/registry/nginx:git
+  image: registry.gitlab.com/6261998/priv/nats:latest
   volumes:
    - ../html:/home/html
   
