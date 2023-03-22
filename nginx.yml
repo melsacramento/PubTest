@@ -9,4 +9,4 @@ services:
     environment:
      - banana=berries
     volumes:
-     - ../html:/home/html
+     - ./html:/home/html
