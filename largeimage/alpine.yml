@@ -1,0 +1,8 @@
+version: '3'
+services:
+ alpinelarge:
+  image: alpine
+  tty: true
+  stdin_open: true
+  volumes:
+   - ../html:/home/alpha
