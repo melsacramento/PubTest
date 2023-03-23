@@ -3,6 +3,8 @@ version: '3'
 services:
 
   alpine:
-    image: 6261998/alpine:latest
+    image: alpine:latest
     stdin_open: true
     tty: true
+    volumes:
+     - ./html:/home/folder

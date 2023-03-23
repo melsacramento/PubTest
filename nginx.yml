@@ -8,3 +8,5 @@ services:
     stdin_open: true
     environment:
      - banana=berries
+    volumes:
+     - ./html:/home/folder
