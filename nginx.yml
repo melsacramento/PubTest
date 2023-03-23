@@ -9,4 +9,4 @@ services:
     environment:
      - banana=berries
     volumes:
-     - ./html:/home/folder
+     - ./html:/usr/share/nginx/html
