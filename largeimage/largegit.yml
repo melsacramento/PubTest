@@ -4,3 +4,11 @@ services:
   image: 6261998/priv:cocalc
   volumes:
       - ../html:/home/html
+  tty: true
+  stdin_open: true
+
+ reasonably-size:
+  image: alpine
+  volumes:
+   - ../html2:/home/html
+
