@@ -2,9 +2,13 @@ version: '3'
 services:
  large-app:
   image: sagemathinc/cocalc
+  volumes:
+      - ../html:/home/html
   tty: true
   stdin_open: true
-  volumes:
-   - ../html:/home/html
 
+ reasonably-size:
+  image: alpine
+  volumes:
+   - ../html2:/home/html
 
