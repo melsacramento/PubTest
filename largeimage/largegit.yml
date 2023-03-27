@@ -4,8 +4,6 @@ services:
   image: sagemathinc/cocalc
   volumes:
       - ../html:/home/html
-  tty: true
-  stdin_open: true
 
  reasonably-size:
   image: alpine
