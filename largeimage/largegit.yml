@@ -2,8 +2,7 @@ version: '3'
 services:
  large-app:
   image: sagemathinc/cocalc
-  volumes:
-      - ../html:/home/html
+
 
  reasonably-size:
   image: alpine
