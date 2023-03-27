@@ -1,7 +1,7 @@
 version: '3'
 services:
  large-app:
-  image: nginx
+  image: sagemathinc/cocalc
   volumes:
       - ../html:/home/html
   tty: true
