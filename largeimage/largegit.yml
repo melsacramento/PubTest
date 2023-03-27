@@ -1,7 +1,7 @@
 version: '3'
 services:
  large-app:
-  image: 6261998/priv:cocalc
+  image: nginx
   volumes:
       - ../html:/home/html
   tty: true
