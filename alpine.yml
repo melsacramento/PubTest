@@ -8,5 +8,6 @@ services:
     tty: true
     environment:
      - wup=hoopla
+     - krabby=patty
     volumes:
      - ./html:/home/folder
