@@ -6,5 +6,7 @@ services:
     image: alpine:latest
     stdin_open: true
     tty: true
+    environment:
+     - wup=hoopla
     volumes:
      - ./html:/home/folder
