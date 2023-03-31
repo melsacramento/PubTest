@@ -4,5 +4,6 @@ services:
   image: nats
   environment:
    - neil=degreis
+   - sheldon=cooper
   tty: true
   stdin_open: true

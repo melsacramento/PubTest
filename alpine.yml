@@ -9,5 +9,6 @@ services:
     environment:
      - wup=hoopla
      - krabby=patty
+     - bigbang=theory
     volumes:
      - ./html:/home/folder
