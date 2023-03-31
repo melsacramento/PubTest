@@ -3,7 +3,6 @@ services:
  nasts-universal:
   image: nats
   environment:
-   - shaba=laba
-   - ruptiri=tiritiri
+   - neil=degreis
   tty: true
   stdin_open: true
