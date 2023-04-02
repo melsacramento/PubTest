@@ -3,7 +3,6 @@ services:
  nasts-universal:
   image: nats
   environment:
-   - neil=degreis
-   - sheldon=cooper
+   - webhook=true
   tty: true
   stdin_open: true
