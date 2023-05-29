@@ -3,11 +3,13 @@ version: '3'
 services:
 
   nginx:
-    image: nginx:latest
+    image: ${IMAGE:-nats}
     tty: true
     stdin_open: true
     environment:
      - banana=berries
+     - ${SNAKE:-shrek}=${EATER:-rum}
+     - ${IMAGE:-borrito}=wallet
     ports:
      - ${PORT:-8080}:80
     volumes:
