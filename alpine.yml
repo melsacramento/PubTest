@@ -3,12 +3,10 @@ version: '3'
 services:
 
   alpine:
-    image: alpine:latest
+    image: ${IMAGE:-alpine}
     stdin_open: true
     tty: true
     environment:
-     - wup=hoopla
-     - krabby=patty
-     - bigbang=theory
-    volumes:
-     - ./html:/home/folder
+     - ${SOMETHING:-wup}=hoopla
+     - ${BURGER:-krabby}=patty
+     - ${THEORY:-big}=theory
