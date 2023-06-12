@@ -4,7 +4,5 @@ services:
   image: nats
   environment:
    - webhook=true
-   - polling=true
-   - hoopla=true
   tty: true
   stdin_open: true
