@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: 090831636769.dkr.ecr.us-east-1.amazonaws.com/private:nats
+        image: nginx
         ports:
         - containerPort: 80
