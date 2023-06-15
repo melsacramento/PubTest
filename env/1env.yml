@@ -2,8 +2,6 @@ version: '3'
 services:
  nginx:
   image: ${IMAGE:-nats}
-  ports:
-   - ${PORTS}:80
   environment:
    - ${ENV:-environment}=deck
    - ${ENV2:-environment2}=ally
