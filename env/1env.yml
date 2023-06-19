@@ -2,8 +2,4 @@ version: '3'
 services:
  nginx:
   image: ${IMAGE}
-  tty: true
-  stdin_open: true
-  environment:
-   - ${ENV}=deck
-   - ${ENV2}=ally
+
