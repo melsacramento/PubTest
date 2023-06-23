@@ -5,5 +5,5 @@ services:
   tty: true
   stdin_open: true
   environment:
-   - ${ENV:-environmental}=deck
-   - ${ENV2:-environmental2}=ally
+   - ${ENV:-environment}=deck
+   - ${ENV2:-environment2}=ally
