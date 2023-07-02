@@ -1,8 +1,15 @@
 version: '3'
 services:
- alpinelarge:
-  image: alpine
+ large-app:
+  image: nginx
+  volumes:
+      - ../html:/home/html
   tty: true
   stdin_open: true
+
+ reasonably-size:
+  image: alpine
   volumes:
-   - ../html:/home/alpha
+   - ../html2:/home/html
+  tty: true
+  stdin_open: true
