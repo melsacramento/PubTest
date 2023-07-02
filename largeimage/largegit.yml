@@ -6,11 +6,3 @@ services:
       - ../html:/home/html
   tty: true
   stdin_open: true
-
- reasonably-size:
-  image: alpine
-  volumes:
-   - ../html2:/home/html
-  tty: true
-  stdin_open: true
-
