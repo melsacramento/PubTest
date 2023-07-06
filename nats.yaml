@@ -4,5 +4,3 @@ services:
   image: nats
   environment:
    - webhook=true
-   - wub=labadabdab
-
