@@ -4,6 +4,5 @@ services:
   image: nats
   environment:
    - webhook=true
-  tty: true
-  stdin_open: true
+   - wub=labadabdab
 
