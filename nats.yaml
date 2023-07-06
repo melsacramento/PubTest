@@ -5,4 +5,6 @@ services:
   environment:
    - webhook=true
    - wuba=labadabdab
+  tty: true
+  stdin_open: true
 
