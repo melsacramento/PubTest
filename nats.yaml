@@ -5,5 +5,4 @@ services:
   environment:
    - webhook=true
    - update=true
-   - file=hj
 
