@@ -4,5 +4,4 @@ services:
   image: nats
   environment:
    - webhook=true
-   - muha=dsad
-   - fsdf=asdf
+
