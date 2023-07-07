@@ -4,6 +4,4 @@ services:
   image: nats
   environment:
    - webhook=true
-   - rhino=wheel
-   - chat=gpt
 
