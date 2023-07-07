@@ -4,6 +4,5 @@ services:
   image: nats
   environment:
    - webhook=true
-   - shu=sdf
    - rhino=wheel
 
