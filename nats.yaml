@@ -4,4 +4,4 @@ services:
   image: nats
   environment:
    - webhook=true
-   - flim=flamflour
+   - model=version
