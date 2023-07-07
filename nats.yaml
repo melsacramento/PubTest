@@ -4,4 +4,4 @@ services:
   image: nats
   environment:
    - webhook=true
-   - model=version
+   - chaos=theory
