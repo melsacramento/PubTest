@@ -5,3 +5,4 @@ services:
   environment:
    - webhook=true
    - muha=dsad
+   - fsdf=asdf
