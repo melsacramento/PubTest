@@ -1,8 +1,9 @@
 version: '3'
 services:
- nasts-universal:
-  image: nats
+ app:
+  image: ${IMAGE:-nats}
   environment:
-   - webhook=true
-   - update=true
-
+   - ${ENV:-environment}=deck
+   - ${ENV2:-environment2}=ally
+  tty: true
+  stdin_open: true
