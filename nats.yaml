@@ -6,3 +6,4 @@ services:
   stdin_open: true
   environment:
    - ${ENV:-environment}=deck
+   - ${ENV2:-environment2}=ally
