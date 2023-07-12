@@ -4,6 +4,4 @@ services:
   image: ${IMAGE:-nats}
   tty: true
   stdin_open: true
-  environment:
-   - ${ENV:-environment}=deck
 
