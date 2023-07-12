@@ -4,4 +4,7 @@ services:
   image: ${IMAGE:-alpine}
   tty: true
   stdin_open: true
+  environment:
+   - ${ENV:-environment}=deck
+   - ${ENV2:-environment2}=ally
 
