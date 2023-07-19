@@ -4,9 +4,3 @@ services:
   image: nats
   tty: true
   stdin_open: true
-  volumes:
-   - bananaadasda=/data
- 
- 
-volumes:
- banana:
