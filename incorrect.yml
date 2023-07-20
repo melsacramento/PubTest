@@ -2,3 +2,5 @@ version: '3'
 services:
  nats:
   image: nginx
+  environment:
+   - edf=deploys
