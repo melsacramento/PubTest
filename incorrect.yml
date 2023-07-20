@@ -1,6 +1,6 @@
 version: '3'
 services:
  nats:
-  image: alpine
+  image: nginx
   tty: true
   stdin_open: true
