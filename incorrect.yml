@@ -4,4 +4,3 @@ services:
   image: nginx
   environment:
    - edf=deploys
-   - erginis=balam
