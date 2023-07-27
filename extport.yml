@@ -8,4 +8,4 @@ services:
     stdin_open: true
     environment:
       - ${PINE:-laba}=dabdab
-      - ${SAME:-lambda}=pugsdfsdfafsdafsdf
+      - ${SAME:-lambda}=pugs
