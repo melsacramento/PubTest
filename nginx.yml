@@ -3,7 +3,7 @@ version: '3'
 services:
 
   nginx:
-    image: ${IMAGE:-nats}
+    image: ${IMAGE:-nginx}
     tty: true
     stdin_open: true
     environment:
@@ -12,5 +12,3 @@ services:
      - ${IMAGE:-borrito}=wallet
     ports:
      - ${PORT:-8080}:80
-    volumes:
-     - ./html:/usr/share/nginx/html
