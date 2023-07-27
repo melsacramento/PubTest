@@ -8,7 +8,7 @@ services:
     stdin_open: true
     environment:
      - banana=berries
-     - ${SNAKE:-shrek}=${EATER:-rum}
-     - ${IMAGE:-borrito}=wallet
+     - ${ENV:-shrek}=${EATER:-rum}
+     - ${ENV2:-borrito}=wallet
     ports:
      - ${PORT:-8080}:80
