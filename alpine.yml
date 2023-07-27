@@ -8,5 +8,5 @@ services:
     tty: true
     environment:
      - ${SOMETHING:-wup}=hoopla
-     - ${BURGER:-krabby}=pattys
+     - ${BURGER:-krabby}=patty
 
