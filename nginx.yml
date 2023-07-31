@@ -1,14 +1,12 @@
 version: '3'
 
 services:
-
-  nginx:
-    image: ${IMAGE:-nginx}
-    tty: true
-    stdin_open: true
+  nginx-app:
+    image: ${IMAGE2:-nginx}
+    tty: ${BOOLEAN:-false}
+    stdin_open: ${BOOLEAN:-false}
     environment:
      - banana=berries
      - ${ENV:-shrek}=${EATER:-rum}
      - ${ENV2:-borrito}=wallet
-    ports:
-     - ${PORT:-8080}:80
+
