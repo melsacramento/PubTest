@@ -6,4 +6,4 @@ services:
   stdin_open: true
   environment:
    - hello=hello
-   - protocol=num
+   - protocol=numpad
