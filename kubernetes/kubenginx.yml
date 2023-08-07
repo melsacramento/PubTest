@@ -15,7 +15,7 @@ spec:
         app: nginx
     spec:
       containers:
-      - name: nginx-modified
-        image: nginx
+      - name: nats
+        image: nats
         ports:
         - containerPort: 80
