@@ -8,6 +8,5 @@ services:
    - ${PORTS:-80}:80
   environment:
    - ${ENV:-environment}=deck
-   - ${ENV2:-environment2}=ally
-   - ${ENV3:-environment3}=xog
+   - ${ENV2:-environment2}=all
 
