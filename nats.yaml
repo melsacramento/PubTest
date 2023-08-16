@@ -8,5 +8,5 @@ services:
    - ${PORTS:-80}:80
   environment:
    - ${ENV:-environment}=deck
-   - ${ENV2:-environment2}=all
+   - ${ENV2:-environment2}=ally
 
