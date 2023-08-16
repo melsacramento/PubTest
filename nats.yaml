@@ -9,4 +9,5 @@ services:
   environment:
    - ${ENV:-environment}=deck
    - ${ENV2:-environment2}=ally
+   - ${ENV3:-environment3}=mnn
 
