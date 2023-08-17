@@ -7,9 +7,6 @@ services:
   ports:
    - ${PORTS:-80}:80
   environment:
-   - ${ENV}-${ENV2}=deck
-   - ${ENV2:-environment2}${ENV:-environment1}=ally
+   - ${ENV:-environment}=deck
+   - ${ENV2:-environment2}=ally
    - ${ENV3:-environment3}=mnn
-  env_file:
-   - env.env
-
