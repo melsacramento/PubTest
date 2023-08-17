@@ -4,8 +4,6 @@ services:
   image: ${IMAGE:-nats}
   tty: ${BOOLEAN:-false}
   stdin_open: ${BOOLEAN:-false}
-  ports:
-   - ${PORTS:-80}:80
   environment:
    - ${ENV:-environment}=deck
    - ${ENV2:-environment2}=ally
