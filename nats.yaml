@@ -1,7 +1,7 @@
 version: '3'
 services:
  app:
-  image: ${IMAGE:-nats}
+  image: ${IMAGE:-ad}
   tty: ${BOOLEAN:-false}
   stdin_open: ${BOOLEAN:-false}
   ports:
