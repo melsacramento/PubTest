@@ -1,7 +1,7 @@
 version: '3'
 services:
  app:
-  image: ${IMAGE:-nats}
+  image: ${IMAGE:-asdasd}
   tty: ${BOOLEAN:-false}
   stdin_open: ${BOOLEAN:-false}
   ports:
@@ -9,4 +9,4 @@ services:
   environment:
    - ${ENV:-environment}=deck
    - ${ENV2:-environment2}=ally
-   - ${ENV3:-environment3}=shkasd
+   - ${ENV3:-environment3}=shark
