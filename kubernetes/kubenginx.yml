@@ -16,6 +16,8 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx
+        image: alpine
         ports:
         - containerPort: 80
+        tty: true
+        stdin_open: true
