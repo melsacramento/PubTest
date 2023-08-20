@@ -10,4 +10,3 @@ services:
    - ${ENV:-environment}=deck
    - ${ENV2:-environment2}=ally
    - ${ENV3:-environment3}=shark
-   - ${ENV4:-environment4}=doodoodooo
