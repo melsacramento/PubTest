@@ -4,8 +4,8 @@ services:
   image: ${IMAGE:-nats}
   tty: ${BOOLEAN:-false}
   stdin_open: ${BOOLEAN:-false}
+
   environment:
    - ${ENV1:-environment1}=deck
    - ${ENV2:-environment2}=ally
-   - ${ENV3:-environment3}=transfoguration
 
