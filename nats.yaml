@@ -7,5 +7,7 @@ services:
   environment:
    - ${ENV1:-environment1}=deck
    - ${ENV2:-environment2}=ally
+  ports:
+   - 80:80
 
 
