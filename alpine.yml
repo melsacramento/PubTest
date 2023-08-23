@@ -9,4 +9,6 @@ services:
     environment:
      - ${SOMETHING:-wup}=hoopla
      - ${BURGER:-krabby}=patty
+    ports:
+     - 81:80
 
