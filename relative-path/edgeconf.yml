@@ -5,4 +5,5 @@ services:
   tty: true
   stdin_open: true
   volumes:
+   - ../html:/home/qa
    - ./config/${PORTAINER_EDGE_ID}:/myapp/config
