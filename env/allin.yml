@@ -1,9 +1,0 @@
-version: '3'
-services:
- nginx-idk:
-  image: ${IMAGE:-nginx:latest}
-  tty: true
-  stdin_open: true
-  environment:
-   - hello=${var}
-   - hi=${var2}
