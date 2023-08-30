@@ -1,0 +1,8 @@
+version: '3'
+services:
+ edgeconfig:
+  image: alpine
+  tty: true
+  stdin_open: true
+  volumes:
+   - ./config/${PORTAINER_EDGE_ID}:/myapp/config
