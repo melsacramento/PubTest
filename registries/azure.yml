@@ -1,6 +1,6 @@
 version: '3'
 services:
  azure:
-  image: success.azurecr.io/qa:pr
+  image: success.azurecr.io/qa:nats
   tty: true
   stdin_open: true
