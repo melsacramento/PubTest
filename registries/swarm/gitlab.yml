@@ -1,0 +1,8 @@
+version: '3'
+services:
+ gitlabapp:
+  image: registry.gitlab.com/6261998/priv/nats:latest
+  deploy:
+   mode: global
+  volumes:
+   - ../html:/home/html

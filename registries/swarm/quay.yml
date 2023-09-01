@@ -1,0 +1,8 @@
+version: '3'
+services:
+ quay:
+  image: quay.io/portainer.io/nginx:latest
+  environment:
+   - quay=updateviawebhook
+  deploy:
+   mode: global

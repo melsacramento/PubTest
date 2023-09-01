@@ -1,0 +1,8 @@
+version: '3'
+services:
+ ghcr:
+  image: ghcr.io/melsacramento/priv:nats
+  tty: true
+  stdin_open: true
+  deploy:
+   mode: global
