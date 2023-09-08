@@ -1,6 +1,6 @@
 version: '3'
 services:
  nats:
-  image: nats
+  image: idonotexistnats
   ports:
    - 8080:80
