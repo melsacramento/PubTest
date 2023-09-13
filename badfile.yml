@@ -1,6 +1,6 @@
 version: '3'
 services:
  nats:
-  image: idontexist
+  image: nginx
   ports:
-   - 8080:80
+   - 8085:80
