@@ -1,6 +1,6 @@
 version: '3'
 services:
  nats:
-  image: nginx
+  image: 6261998/nats:custom
   ports:
    - 8085:80
