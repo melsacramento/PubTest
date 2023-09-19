@@ -15,7 +15,7 @@ spec:
         app: nginx
     spec:
       containers:
-      - name: nginx-supreme
+      - name: nginx
         image: nats
         ports:
         - containerPort: 80
