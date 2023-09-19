@@ -2,7 +2,7 @@ version: '3'
 services:
  app:
   image: ${IMAGE:-nats}
-  tty: true
+  tty: {{tof}}
   stdin_open: ${BOOLEAN:-false}
   environment:
    - ${ENV1:-environment1}=deck
