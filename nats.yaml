@@ -1,7 +1,7 @@
 version: '3'
 services:
  app:
-  image: ${IMAGE:-idonotexistsnats}
+  image: ${IMAGE:-nats}
   tty: true
   stdin_open: ${BOOLEAN:-false}
   environment:
