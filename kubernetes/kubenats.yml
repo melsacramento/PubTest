@@ -15,7 +15,7 @@ spec:
         app: nats
     spec:
       containers:
-      - name: nats-modofied
+      - name: nats
         image: nats
         ports:
         - containerPort: 81
