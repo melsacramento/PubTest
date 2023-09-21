@@ -5,5 +5,6 @@ services:
     container_name: nginx-container
     environment:
      - test=test
+     - country=club
     deploy:
      mode: global
