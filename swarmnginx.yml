@@ -4,7 +4,6 @@ services:
     image: nginx
     container_name: nginx-container
     environment:
-     - test=test
-     - lasd=zxc
+     - test=asd
     deploy:
      mode: global
