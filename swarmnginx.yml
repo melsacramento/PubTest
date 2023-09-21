@@ -5,6 +5,6 @@ services:
     container_name: nginx-container
     environment:
      - test=test
-     - henlo=honla
+     - chips=sauce
     deploy:
      mode: global
