@@ -9,5 +9,6 @@ services:
    - ${ENV2:-environment2}=ally
    - even=changes
    - make=changes
+   - breaking=changes
 
 
