@@ -9,4 +9,6 @@ services:
    - ${ENV2:-environment2}=ally
    - edit=version
    - another=update
+  ports:
+   - 80:80
 
