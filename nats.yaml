@@ -8,6 +8,5 @@ services:
    - ${ENV1:-environment1}=deck
    - ${ENV2:-environment2}=ally
    - i=forgot
-   - to=update
-   - the=stacks
+
 
