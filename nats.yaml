@@ -9,4 +9,5 @@ services:
    - ${ENV2:-environment2}=ally
    - meeseeks=lose
    - dog=guilt
-
+  ports:
+   - 80:80
