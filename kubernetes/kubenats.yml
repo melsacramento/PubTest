@@ -15,7 +15,7 @@ spec:
         app: nats
     spec:
       containers:
-      - name: nats-supreme-asd-wishing
+      - name: nats-supreme-asd
         image: nats
         ports:
         - containerPort: 81
