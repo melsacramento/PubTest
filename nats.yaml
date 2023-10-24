@@ -7,5 +7,3 @@ services:
   environment:
    - ${ENV1:-environment1}=deck
    - ${ENV2:-environment2}=ally
-   - try=that
-   - bad=behaviour
