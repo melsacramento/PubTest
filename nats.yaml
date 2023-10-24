@@ -10,3 +10,5 @@ services:
    - i=forgot
    - to=update
    - the=stacks
+  ports:
+   - 80:80
