@@ -8,3 +8,4 @@ services:
    - ${ENV1:-environment1}=deck
    - ${ENV2:-environment2}=ally
    - past=that
+   - quit=stalling
