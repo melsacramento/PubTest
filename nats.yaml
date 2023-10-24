@@ -10,5 +10,6 @@ services:
    - mission=impossible
    - cruci=fixion
    - aqua=rium
+   - algo=rithm
 
 
