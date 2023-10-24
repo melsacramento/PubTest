@@ -9,6 +9,5 @@ services:
    - ${ENV2:-environment2}=ally
    - mission=impossible
    - cruci=fixion
-   - aqua=rium
 
 
