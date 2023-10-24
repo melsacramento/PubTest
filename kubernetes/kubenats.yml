@@ -15,7 +15,7 @@ spec:
         app: nats
     spec:
       containers:
-      - name: nats-supreme-asd
+      - name: nats-supreme
         image: nats
         ports:
         - containerPort: 81
