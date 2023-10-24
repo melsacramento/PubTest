@@ -9,3 +9,4 @@ services:
    - ${ENV2:-environment2}=ally
    - meeseeks=lose
    - dog=guilt
+   - portal=gun
