@@ -9,4 +9,3 @@ services:
    - ${ENV2:-environment2}=ally
    - futaro=kun
    - miku=chan
-   - nino=ichika
