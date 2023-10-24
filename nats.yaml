@@ -10,4 +10,3 @@ services:
    - environment=asd
    - free=dom
    - leaving=home
-   - going=home
