@@ -8,5 +8,4 @@ services:
     environment:
      - banana=berries
      - ${ENV:-shrek}=${EATER:-rum}
-     - ${ENV2:-borrito}=wallet
 
