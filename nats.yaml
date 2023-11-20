@@ -6,8 +6,5 @@ services:
   stdin_open: ${BOOLEAN:-false}
   environment:
    - ${ENV1:-environment1}=deck
-   - ${ENV2:-environment2}=ally
-   - ${ENV3:-environment3}=switch
-   - ${ENV3:-environment4}=go
-   - ${ENV4:-environment5}=kun
+
 
