@@ -7,4 +7,5 @@ services:
     stdin_open: ${BOOLEAN:-false}
     environment:
      - banana=berries
+     - straw=berry
 
