@@ -7,6 +7,4 @@ services:
     stdin_open: ${BOOLEAN:-false}
     environment:
      - banana=berries
-     - ${ENV:-shrek}=${EATER:-rum}
-     - ${ENV2:-fairy}=loompa
 
