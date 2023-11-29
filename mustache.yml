@@ -5,3 +5,4 @@ services:
   environment:
    - ENV={{value}}
    - ENV2={{value2}}
+   - ENV3={{value3}}
