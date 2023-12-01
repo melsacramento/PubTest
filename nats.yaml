@@ -5,8 +5,8 @@ services:
   tty: true
   stdin_open: ${BOOLEAN:-false}
   environment:
-   - ${ENV1:-environment1}={{value}}
-   - ${ENV2:-environment2}={{value2}}
-   - ${ENV3:-environment3}={{value3}}
+   - ${ENV1:-environment1}=value
+   - ${ENV2:-environment2}=value2
+   - ${ENV3:-environment3}=value3
    
 
