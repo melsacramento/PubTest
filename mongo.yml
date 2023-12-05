@@ -1,5 +1,8 @@
 version: '3'
 services:
- large-file:
+ mongo:
   image: mongo
-  
+ nats:
+  image: nats
+ nginx:
+  image: nginx
