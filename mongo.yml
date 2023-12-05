@@ -8,6 +8,8 @@ services:
   image: nginx
  alpine:
   image: alpine
+  tty: true
+  stdin_open: true
  nats2:
   image: nats
  nats3:
