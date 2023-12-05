@@ -6,3 +6,23 @@ services:
   image: nats
  nginx:
   image: nginx
+ alpine:
+  image: alpine
+ nats2:
+  image: nats
+ nats3:
+  image: nats
+ nats4:
+  image: nats
+ nats5:
+  image: nats
+ nats6:
+  image: nats
+ nats7:
+  image: nats
+ nats8:
+  image: nats
+ nats9:
+  image: nats
+ nats10:
+  image: nats
