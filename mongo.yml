@@ -2,3 +2,5 @@ version: '3'
 services:
  mongo:
   image: 6261998/custom:mongo
+  stdin_open: true
+  tty: true
