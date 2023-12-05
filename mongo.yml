@@ -4,3 +4,5 @@ services:
   image: 6261998/custom:mongo
   stdin_open: true
   tty: true
+  environment:
+   - hello=hi
