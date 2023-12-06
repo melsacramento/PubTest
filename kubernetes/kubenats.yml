@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: nats
-        image: alpine
+        image: nats
         ports:
         - containerPort: 81
 
