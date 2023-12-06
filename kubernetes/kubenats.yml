@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: nats
-        image: mongo
+        image: nats
         ports:
         - containerPort: 81
 
