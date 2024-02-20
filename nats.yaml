@@ -5,7 +5,7 @@ services:
   tty: true
   stdin_open: ${BOOLEAN:-false}
   environment:
-   - ${ENV:-environment}=value
+   - ${ENV:-environment}=value3
 
    
 
