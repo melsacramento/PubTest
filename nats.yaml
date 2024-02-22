@@ -6,3 +6,4 @@ services:
   stdin_open: ${BOOLEAN:-false}
   environment:
    - ${ENV:-environment}=value3
+   - time=cool
