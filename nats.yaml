@@ -6,8 +6,3 @@ services:
   stdin_open: ${BOOLEAN:-false}
   environment:
    - ${ENV:-environment}=value3
-   - iamtesting=this
-   - stay=rad
-
-   
-
