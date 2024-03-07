@@ -6,4 +6,6 @@ services:
       - ../html:/home/html
   tty: true
   stdin_open: true
+  environment:
+   - hello=hi
 
