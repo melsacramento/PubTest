@@ -8,4 +8,5 @@ services:
   stdin_open: true
   environment:
    - hello=hi
+   - fire=bending
 
