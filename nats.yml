@@ -7,3 +7,4 @@ services:
   environment:
    - ${ENV:-environment}=value3
    - time=cool
+   - nats2=branch2
