@@ -17,6 +17,8 @@ spec:
       containers:
       - name: nats
         image: nats
+        environments:
+         - hello=hi
         ports:
         - containerPort: 81
 
