@@ -17,8 +17,9 @@ spec:
       containers:
       - name: nats
         image: nats
-        environments:
-         - hello=hi
+        env:
+         - name: hello
+           value: hoopla
         ports:
         - containerPort: 81
 
