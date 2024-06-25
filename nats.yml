@@ -8,3 +8,4 @@ services:
    - ${ENV:-environment}=value3
    - time=cool
    - branch=main
+   - in=spite
