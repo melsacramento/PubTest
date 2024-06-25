@@ -5,6 +5,6 @@ services:
   tty: true
   stdin_open: ${BOOLEAN:-false}
   environment:
-   - ${ENV:-environment}=value3
-   - time=cool
-   - yaml3=branch3
+   - ${ENV:-environment}=value1
+   - continental=breakfast
+   - main=branch
