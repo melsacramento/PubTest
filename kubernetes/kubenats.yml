@@ -17,6 +17,7 @@ spec:
       containers:
       - name: nats
         image: nats
-        ports:
-        - containerPort: 81
+        env:
+         - name: migard
+           value: branch3
 
