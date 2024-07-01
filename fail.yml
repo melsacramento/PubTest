@@ -2,3 +2,5 @@ version: '3'
 services:
  fail:
   image: natsasd
+  environment:
+   - hello=hi
