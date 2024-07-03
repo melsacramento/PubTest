@@ -20,6 +20,6 @@ spec:
         tty: true
         stdin: true
         env:
-         - name: b
+         - name: basd
            value: mainsd
 
