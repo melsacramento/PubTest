@@ -20,6 +20,6 @@ spec:
         tty: true
         stdin: true
         env:
-         - name: brasdasd
+         - name: b
            value: mainsd
 
