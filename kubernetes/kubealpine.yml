@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
   - name: alpine
-    image: alpine:latest
+    image: 6261998/alpine:latest
     stdin: true 
     tty: true 
 
