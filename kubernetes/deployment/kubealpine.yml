@@ -17,6 +17,8 @@ spec:
       containers:
       - name: alpine
         image: 6261998/alpine:latest
+        tty: true
+        stdin: true
         env:
          - name: branch
            value: main
