@@ -8,6 +8,9 @@ spec:
     image: 6261998/alpine:latest
     stdin: true 
     tty: true 
+    env:
+     - name: hello
+       value: hoopla
 
 #To attach use microk8s kubectl exec --tty --stdin pod/name -- /bin/ash
 
