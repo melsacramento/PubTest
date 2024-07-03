@@ -20,6 +20,6 @@ spec:
         tty: true
         stdin: true
         env:
-         - name: another-hooplasdf
+         - name: asd
            value: adada-network
 
