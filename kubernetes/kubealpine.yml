@@ -9,3 +9,5 @@ spec:
     stdin: true 
     tty: true 
 
+#To attach use microk8s kubectl exec --tty --stdin pod/name -- /bin/ash
+
