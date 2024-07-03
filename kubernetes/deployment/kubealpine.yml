@@ -20,6 +20,6 @@ spec:
         tty: true
         stdin: true
         env:
-         - name: basdoisdfi
+         - name: basdoisx
            value: mainsd
 
