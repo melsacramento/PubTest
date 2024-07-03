@@ -6,4 +6,6 @@ spec:
   containers:
   - name: alpine
     image: alpine:latest
+    stdin: true 
+    tty: true 
 
