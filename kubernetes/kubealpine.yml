@@ -10,7 +10,7 @@ spec:
     tty: true 
     env:
      - name: hello
-       value: hoopla
+       value: hoop
 
 #To attach use microk8s kubectl exec --tty --stdin pod/name -- /bin/ash
 
