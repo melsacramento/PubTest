@@ -9,3 +9,4 @@ services:
    - continental=breakfast
    - school=mate
    - nats=upgrade 
+   - edge=true
