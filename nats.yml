@@ -8,3 +8,4 @@ services:
    - ${ENV:-environment}=value1
    - continental=breakfast
    - school=mate
+   - nats=upgrade 
