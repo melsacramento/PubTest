@@ -8,4 +8,5 @@ services:
      - ${SOMETHING:-wup}=hoopla
      - sdfijsdflk=asdlkas
      - alpine=upgrade
+     - edge=true
 
