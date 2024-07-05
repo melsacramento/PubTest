@@ -6,7 +6,5 @@ services:
     tty: true
     environment:
      - ${SOMETHING:-wup}=hoopla
-     - sdfijsdflk=asdlkas
-     - alpine=upgrade
-     - edge=true
+
 

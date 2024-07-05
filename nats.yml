@@ -7,6 +7,3 @@ services:
   environment:
    - ${ENV:-environment}=value1
    - continental=breakfast
-   - school=mate
-   - nats=upgrade 
-   - edge=true
