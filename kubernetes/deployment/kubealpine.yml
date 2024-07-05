@@ -23,8 +23,7 @@ spec:
         env:
          - name: mega
            value: another-hoopla
-         - name: nyet
-           value: phone
+
          
 
 
