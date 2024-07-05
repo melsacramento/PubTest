@@ -19,6 +19,7 @@ spec:
         image: 6261998/alpine:latest
         tty: true
         stdin: true
+        imagePullPolicy: Always
         env:
          - name: mega
            value: another-hoopla
