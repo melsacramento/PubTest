@@ -22,4 +22,6 @@ spec:
         env:
          - name: mega
            value: another-hoopla
+         - name: playlist
+           value: named
 
