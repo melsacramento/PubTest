@@ -7,5 +7,6 @@ services:
     environment:
      - ${SOMETHING:-wup}=hoopla
      - something=wrong
+     - mid=night
 
 

@@ -7,5 +7,5 @@ services:
   environment:
    - ${ENV:-environment}=value1
    - continental=breakfast
-   
+   - mid=night
 
