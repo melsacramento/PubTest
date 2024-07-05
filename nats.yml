@@ -7,6 +7,5 @@ services:
   environment:
    - ${ENV:-environment}=value1
    - continental=breakfast
-   - rex=todd
-   - toad=todd
+   
 

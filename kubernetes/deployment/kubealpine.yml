@@ -23,7 +23,6 @@ spec:
         env:
          - name: mega
            value: another-hoopla
-         - name: life
-           value: plus
+         
 
 
