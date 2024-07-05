@@ -3,7 +3,7 @@ services:
  app:
   image: ${IMAGE:-nats}
   tty: true
-  stdin_open: ${BOOLEAN:-false}
+  stdin_open: ${BOOLEAN:-true}
   environment:
    - ${ENV:-environment}=value1
    - continental=breakfast
