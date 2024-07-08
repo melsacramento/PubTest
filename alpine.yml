@@ -10,6 +10,7 @@ services:
      - chain=repo
      - repositoryu=mecha
      - reputable=update
+     - another=update
      
 
 
