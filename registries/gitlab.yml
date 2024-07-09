@@ -1,7 +1,7 @@
 version: '3'
 services:
  gitlabapp:
-  image: registry.gitlab.com/6261998/priv/nats:latest
-  volumes:
-   - ../html:/home/html
+  image: registry.gitlab.com/6261998/registry/alpine:latest
+  tty: true
+  stdin_open: true
   
