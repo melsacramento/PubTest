@@ -6,12 +6,4 @@ services:
     tty: true
     environment:
      - ${SOMETHING:-wup}=hoopla
-     - webhook=update
-     - give=update
-     - polling=update
-     - so=many
-     - update=yes
-
-     
-
 
