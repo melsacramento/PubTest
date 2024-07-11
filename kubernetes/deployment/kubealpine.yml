@@ -25,6 +25,8 @@ spec:
            value: another-hoopla
          - name: mitre
            value: mega
+         - name: New-Zealand
+           value: isCold
 
          
 
