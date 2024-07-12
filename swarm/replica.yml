@@ -1,0 +1,9 @@
+version: '3'
+services:
+ replica-deployment:
+  image: ${IMAGE:-alpine}
+  tty: true
+  stdin_open: true
+  deploy:
+   mode: replicated
+   replicas: 1

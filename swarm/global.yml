@@ -1,0 +1,8 @@
+version: '3'
+services:
+ global-deployment:
+  image: ${IMAGE:-alpine}
+  tty: true
+  stdin_open: true
+  deploy:
+   mode: global
