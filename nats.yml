@@ -8,4 +8,5 @@ services:
    - ${ENV:-environment}=value1
    - polling=update
    - webhook=update
+   - manual=update
 

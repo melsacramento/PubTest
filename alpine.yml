@@ -8,3 +8,4 @@ services:
      - ${SOMETHING:-wup}=hoopla
      - polling=update
      - webhook=update
+     - manual=update
