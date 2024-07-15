@@ -6,5 +6,4 @@ services:
     tty: true
     environment:
      - ${SOMETHING:-wup}=hoopla
-     - atest=show
-
+     - polling=update
