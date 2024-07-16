@@ -6,4 +6,4 @@ services:
     tty: true
     environment:
      - ${SOMETHING:-wup}=hoopla
-
+     - normal=pull
