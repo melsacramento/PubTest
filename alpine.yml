@@ -7,3 +7,4 @@ services:
     environment:
      - ${SOMETHING:-wup}=hoopla
      - normal=pull
+     - polling=update
