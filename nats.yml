@@ -8,5 +8,6 @@ services:
    - ${ENV:-environment}=value1
    - manual=pull
    - gitops=fix
+   - polling=update
 
 

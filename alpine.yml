@@ -8,5 +8,6 @@ services:
      - ${SOMETHING:-wup}=hoopla
      - manual=pull
      - gitops=fix
+     - polling=update
 
 
