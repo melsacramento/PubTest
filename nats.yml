@@ -7,6 +7,6 @@ services:
   environment:
    - ${ENV:-environment}=value1
    - manual=pull
-   - gitops=fix
+
 
 

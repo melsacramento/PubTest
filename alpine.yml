@@ -7,6 +7,5 @@ services:
     environment:
      - ${SOMETHING:-wup}=hoopla
      - manual=pull
-     - gitops=fix
 
 
