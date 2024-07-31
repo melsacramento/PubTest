@@ -1,7 +1,7 @@
 version: '3'
 services:
  gitlabapp:
-  image: ${IMAGE:-registry.gitlab.com/6261998/registry/nats2:latest}
+  image: ${IMAGE:-registry.gitlab.com/6261998/registry/alpine:latest}
   tty: true
   stdin_open: true
   environment:
