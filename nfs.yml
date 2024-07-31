@@ -1,0 +1,19 @@
+version: '3'
+services:
+ alpine:
+  image: registry.gitlab.com/6261998/registry/alpine:latest
+  tty: true
+  stdin_open: true
+  environment:
+   - hello=hi
+   - sfd=xcv
+  volumes:
+   - nfs-repo:/nfs_share
+   
+volumes:
+ nfs-repo:
+  driver: local
+  driver_opts:
+   type: 'nfs'
+   device: '10.20.0.20:/nfs_share'
+   o: 'addr=10.20.0.20,rw,noatime,rsize=8192,wsize=8192,tcp,timeo=14,nfsvers=4'
