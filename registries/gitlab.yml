@@ -6,4 +6,5 @@ services:
   stdin_open: true
   environment:
    - ${ENV:-default}=deck
-   - ${ENV2:-default}=ally   
+   - ${ENV2:-default}=ally
+   - asda=asdas
