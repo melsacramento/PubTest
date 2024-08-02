@@ -7,4 +7,5 @@ services:
   environment:
    - ${ENV:-default}=deck
    - ${ENV2:-default}=ally
+   - ${ENV3:-default}=go
    - asda=asdas
