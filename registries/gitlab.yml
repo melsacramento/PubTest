@@ -7,3 +7,4 @@ services:
   environment:
    - ${ENV:-default}=deck
    - asd=asd
+   - opi=nj
