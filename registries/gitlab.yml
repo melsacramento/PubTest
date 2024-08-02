@@ -6,5 +6,3 @@ services:
   stdin_open: true
   environment:
    - ${ENV:-default}=deck
-   - full=moon
-   - full=life
