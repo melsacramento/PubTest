@@ -12,3 +12,4 @@ services:
       - ./letsencrypt:/etc/letsencrypt
     environment:
      - hello=hiioka
+     - miami=asd
