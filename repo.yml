@@ -1,4 +1,6 @@
 version: '3'
 services:
  repo:
-  image: 6261998/enginex
+  image: registry.gitlab.com/6261998/registry/alpine:latest
+  tty: true
+  stdin_open: true
