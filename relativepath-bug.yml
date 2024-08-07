@@ -11,5 +11,5 @@ services:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
     environment:
-     - hello=hiioka
+     - hello=hoopla
      - miami=asd
