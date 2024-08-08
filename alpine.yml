@@ -5,8 +5,8 @@ services:
     stdin_open: true
     tty: true
     environment:
-     - ${SOMETHING:-wup}=hoopla
-    ports:
-     - 80:80
+     - ${SOMETHING:-wup}=hoopl
+ #   ports:
+#     - 80:80
 
 
