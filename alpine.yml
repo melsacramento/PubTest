@@ -7,7 +7,8 @@ services:
     environment:
      - ${SOMETHING:-wup}=hoopla
      - manual=pull
-    ports:
-     - 80:80
+     - repull=again
+#    ports:
+#     - 80:80
 
 
