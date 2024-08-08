@@ -6,7 +6,7 @@ services:
     tty: true
     environment:
      - ${SOMETHING:-wup}=hoopla
-    ports:
-     - 80:80
+#    ports:
+#     - 80:80
 
 
