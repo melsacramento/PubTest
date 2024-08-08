@@ -8,7 +8,8 @@ services:
      - ${SOMETHING:-wup}=hoopla
      - manual=pull
      - repull=again
-#    ports:
-#     - 80:80
+     - asdff=asd
+    ports:
+     - 80:80
 
 
