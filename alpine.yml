@@ -7,7 +7,7 @@ services:
     environment:
      - ${SOMETHING:-wup}=hoopla
      - sdf=sdf
-#    ports:
-#     - 85:80
+    ports:
+     - 85:80
 
 
