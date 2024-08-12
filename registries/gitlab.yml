@@ -9,5 +9,3 @@ services:
    - ${ENV2:-default}=ally
    - ${ENV3:-default}=go
    - lkjk=jlkjlk
-   - asda=asdas
-   - dsfsd=sdfsdfs
