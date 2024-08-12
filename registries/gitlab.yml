@@ -9,4 +9,5 @@ services:
    - ${ENV2:-default}=ally
    - ${ENV3:-default}=go
    - sdffsdfsd=cvcxvxcv
+   - vsdf=sdfdsf
 
