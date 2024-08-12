@@ -7,9 +7,6 @@ services:
     environment:
      - ${SOMETHING:-wup}=hoopla
      - sdf=sdf
-     - sdvcvb=dfg
-     - lkjkl=joi
-     - sfd=xcvv
     ports:
      - ${PORTS:-85}:80
 
