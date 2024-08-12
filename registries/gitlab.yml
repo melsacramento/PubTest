@@ -10,3 +10,4 @@ services:
    - ${ENV3:-default}=go
    - lkjk=jlkjlk
    - sdf=xcv
+   - xcv=sdfsdfds
