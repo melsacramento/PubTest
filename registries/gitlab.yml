@@ -8,7 +8,4 @@ services:
    - ${ENV:-default}=deck
    - ${ENV2:-default}=ally
    - ${ENV3:-default}=go
-   - sdffsdfsd=cvcxvxcv
-   - vsdf=sdfdsf
-   - cxvcxvx=sdfsdf
 

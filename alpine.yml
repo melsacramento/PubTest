@@ -6,8 +6,6 @@ services:
     tty: true
     environment:
      - ${SOMETHING:-wup}=hoopla
-     - sdf=sdf
-     - sdf=xcv
     ports:
      - ${PORTS:-85}:80
 
