@@ -8,6 +8,7 @@ services:
      - ${SOMETHING:-wup}=hoopla
      - sdf=sdf
      - sdvcvb=dfg
+     - lkjkl=joi
     ports:
      - ${PORTS:-85}:80
 
