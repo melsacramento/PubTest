@@ -10,4 +10,5 @@ services:
    - ${ENV3:-default}=go
    - sdffsdfsd=cvcxvxcv
    - vsdf=sdfdsf
+   - cxvcxvx=sdfsdf
 
