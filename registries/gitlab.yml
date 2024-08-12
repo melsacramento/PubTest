@@ -8,4 +8,5 @@ services:
    - ${ENV:-default}=deck
    - ${ENV2:-default}=ally
    - ${ENV3:-default}=go
+   - asasdas=asdasda
 

@@ -8,5 +8,6 @@ services:
      - ${SOMETHING:-wup}=hoopla
     ports:
      - ${PORTS:-85}:80
+     - some=hoopla
 
 
