@@ -13,3 +13,4 @@ services:
     environment:
      - hello=hoopla
      - sdf=xc
+     - dcvd=sdf
