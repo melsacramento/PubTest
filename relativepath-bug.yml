@@ -13,3 +13,4 @@ services:
     environment:
      - hello=hoopla
      - miami=asd
+     - sdff=cxv
