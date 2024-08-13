@@ -14,4 +14,4 @@ services:
      - hello=hoopla
      - sdf=xc
      - sdfsd=xcvv
-     - agent=true
+     - agent=truefalse
