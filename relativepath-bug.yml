@@ -12,5 +12,3 @@ services:
       - ./letsencrypt:/etc/letsencrypt
     environment:
      - hello=hoopla
-     - miami=asd
-     - sdff=cxv
