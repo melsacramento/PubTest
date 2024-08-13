@@ -16,4 +16,4 @@ services:
      - sdfsd=xcvv
      - agent=truefalse
      - edge=true
-     - edge=agent
+     - edge=agentsdfds
