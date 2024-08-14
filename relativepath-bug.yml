@@ -12,8 +12,4 @@ services:
       - ./letsencrypt:/etc/letsencrypt
     environment:
      - hello=hoopla
-     - sdf=xc
-     - sdfsd=xcvv
-     - agent=truefalse
-     - edge=true
-     - edge=agentsdfds
+
