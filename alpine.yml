@@ -9,6 +9,6 @@ services:
      - sdfs=sdf
      - asd=asd
     ports:
-     - ${PORTS:-86}:80
+     - ${PORTS:-87}:80
 
 
