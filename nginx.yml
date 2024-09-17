@@ -8,5 +8,6 @@ services:
     environment:
      - hello=hi
      - adas=zxc
+     - asq=cxv
     env_file:
       - stack.env
