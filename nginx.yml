@@ -4,7 +4,7 @@ services:
     ports:
       - 8019:80
     volumes:
-      - /tmp:/usr/share/nginx/html/
+      - ${WEB_HOME}:/usr/share/nginx/html/
     environment:
      - hello=hi
     env_file:
