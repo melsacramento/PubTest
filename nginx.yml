@@ -1,11 +1,9 @@
-version: '3'
-
 services:
-  nginx-app:
-    image: ${IMAGE2:-nginx}
-    tty: ${BOOLEAN:-false}
-    stdin_open: ${BOOLEAN:-false}
-    environment:
-     - banana=berries
-     - ${ENV:-shrek}=${EATER:-rum}
-
+  nginx:
+    image: nginx:latest
+    ports:
+      - 8019:80
+    volumes:
+      - ${WEB_HOME}:/usr/share/nginx/html/
+    env_file:
+      - stack.env
