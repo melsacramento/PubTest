@@ -6,4 +6,4 @@ services:
     volumes:
       - ${WEB_HOME}:/usr/share/nginx/html/
     env_file:
-      - .env
+      - stack.env
