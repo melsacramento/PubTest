@@ -5,5 +5,7 @@ services:
       - 8019:80
     volumes:
       - ${WEB_HOME}:/usr/share/nginx/html/
+    environment:
+     - hello=hi
     env_file:
       - stack.env
