@@ -7,7 +7,5 @@ services:
       - ${WEB_HOME}:/usr/share/nginx/html/
     environment:
      - hello=hi
-     - adas=zxc
-     - asq=cxv
     env_file:
       - stack.env
