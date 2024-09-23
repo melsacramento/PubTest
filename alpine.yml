@@ -6,9 +6,6 @@ services:
     tty: true
     environment:
      - ${SOMETHING:-wup}=hoopla
-     - sdfs=sdf
-     - asd=asd
-     - super=update
     ports:
      - ${PORTS:-87}:80
 

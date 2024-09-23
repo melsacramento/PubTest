@@ -6,10 +6,7 @@ services:
   stdin_open: ${BOOLEAN:-true}
   environment:
    - ${ENV:-environment}=value1
-   - manual=pull
-   - asdas=xzc
-   - asd=asda
-   - super=update
+
 
 
 
