@@ -6,9 +6,6 @@ services:
   stdin_open: ${BOOLEAN:-true}
   environment:
    - ${ENV:-environment}=value1
-   - fruits=basket
-   - kyo=cat
-   - shigure=dog
 
 
 
