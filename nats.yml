@@ -8,6 +8,7 @@ services:
    - ${ENV:-environment}=value1
    - poro=poro
    - tars=kul
+   - ghost=attack
 
 
 
