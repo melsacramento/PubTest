@@ -18,7 +18,7 @@ spec:
       - name: nats
         image: nats
         env:
-         - name: branchasd
+         - name: branch
            value: main
         ports:
         - containerPort: 81
