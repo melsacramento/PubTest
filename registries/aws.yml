@@ -6,3 +6,4 @@ services:
   stdin_open: true
   environment:
    - aws=updateviawebhook
+   - another=update
