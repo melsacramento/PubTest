@@ -6,6 +6,3 @@ services:
   stdin_open: ${BOOLEAN:-true}
   environment:
    - ${ENV:-environment}=value1
-   - asdasd=zxczc
-   - cxvcx=asdas
-   - asf=xcv
