@@ -1,7 +1,7 @@
 version: '3'
 services:
  app:
-  image: ${IMAGE:-nginx}
+  image: ${IMAGE:-nats}
   tty: true
   stdin_open: ${BOOLEAN:-true}
   environment:
