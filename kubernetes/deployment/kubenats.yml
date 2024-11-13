@@ -20,6 +20,8 @@ spec:
         env:
          - name: branch
            value: main
+         - name: some
+           value: hoopla
         ports:
         - containerPort: 81
 
