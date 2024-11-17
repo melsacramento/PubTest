@@ -4,3 +4,4 @@ services:
   image: ${IMAGE:-quay.io/portainer.io/nginx:latest}
   environment:
    - quay=updateviawebhook
+   - another=update
