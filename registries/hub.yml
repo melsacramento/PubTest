@@ -1,4 +1,4 @@
 version: '3'
 services:
  hub:
-  image: 6261998/nats:custom2
+  image: ${IMAGE:-6261998/nats:custom2}
