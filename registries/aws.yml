@@ -1,7 +1,7 @@
 version: '3'
 services:
  aws:
-  image: 090831636769.dkr.ecr.us-east-1.amazonaws.com/private:nats
+  image: 533267062141.dkr.ecr.ap-southeast-2.amazonaws.com/private:latest
   tty: true
   stdin_open: true
   environment:
