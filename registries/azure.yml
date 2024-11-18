@@ -1,6 +1,6 @@
 version: '3'
 services:
  azure:
-  image: portainertest.azurecr.io/qa:nats
+  image: portainertest.azurecr.io/nats:latest
   tty: true
   stdin_open: true
