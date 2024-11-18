@@ -1,7 +1,7 @@
 version: '3'
 services:
  aws:
-  image: 533267062141.dkr.ecr.ap-southeast-2.amazonaws.com/private:latest
+  image: 533267062141.dkr.ecr.ap-southeast-2.amazonaws.com/private:alpine
   tty: true
   stdin_open: true
   environment:
