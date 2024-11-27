@@ -1,0 +1,10 @@
+version: '3'
+services:
+ network-nats:
+  image: nats
+  networks:
+   - reponetwork
+
+networks:
+ reponetwork:
+  name: reponetwork
