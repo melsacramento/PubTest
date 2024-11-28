@@ -1,19 +1,19 @@
 version: '3.4'
- services:
+services:
   nats:
-   container_name: nats-container
-   image: nats
-   networks:
-    - network-failure
-   restart: always
+    container_name: nats-container
+    image: nats
+    networks:
+      - network-failure
+    restart: always
 
-   nets:
+  nets:
     container_name: nets-container
     image: nats
     networks:
-     - network-failure
+      - network-failure
     restart: always
 
 networks:
- network-failure:
-  name: network-failure
+  network-failure:
+    name: network-failure
