@@ -1,9 +1,19 @@
-version: '3'
-services:
-  alpine:
-    image: ${IMAGE:-6261998/priv:alpine}
-    stdin_open: true
-    tty: true
+version: '3.4'
+ services:
+  nats:
+   container_name: nats-container
+   image: nats
+   networks:
+    - network-failure
+   restart: always
 
+   nets:
+    container_name: nets-container
+    image: nats
+    networks:
+     - network-failure
+    restart: always
 
-
+networks:
+ network-failure:
+  name: network-failure
