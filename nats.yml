@@ -7,4 +7,3 @@ services:
   environment:
    - ${ENV:-environment}=value1
    - ${ENV2:-environment2}=value2
-   - ${ENV3:-environment3}=value3
