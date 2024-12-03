@@ -6,3 +6,4 @@ services:
   stdin_open: ${BOOLEAN:-true}
   environment:
    - ${ENV:-environment}=value1
+   - ${ENV2:-environment2}=value2
