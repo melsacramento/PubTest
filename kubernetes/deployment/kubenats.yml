@@ -22,8 +22,8 @@ spec:
            value: main
          - name: some
            value: hoopla
-         - name: soba
-           value: noodles
+         - name: webhook
+           value: update
         ports:
         - containerPort: 81
 
