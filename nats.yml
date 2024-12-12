@@ -7,4 +7,5 @@ services:
   environment:
    - ${ENV:-environment}=value1
    - webhook=update
+   - another=update
 
