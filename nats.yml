@@ -7,5 +7,5 @@ services:
   environment:
    - ${ENV:-environment}=value1
    - webhook=again
-  container_name: fish-filet
+  
 
