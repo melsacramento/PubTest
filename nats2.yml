@@ -2,7 +2,4 @@ version: '3'
 services:
  app:
   image: nats
- app2:
-  image: alpine
-  tty: true
-  stdin_open: true
+
