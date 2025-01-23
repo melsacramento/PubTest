@@ -7,5 +7,6 @@ services:
   environment:
    - ${ENV:-environment}=value1
    - webhook=again
+   - balance=again
   
 
