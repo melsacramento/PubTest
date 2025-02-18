@@ -7,5 +7,6 @@ services:
   environment:
    - ${ENV:-environment}=value1
    - test=supreme
+   - eye=tiger
   
 
