@@ -6,7 +6,5 @@ services:
   stdin_open: ${BOOLEAN:-true}
   environment:
    - ${ENV:-environment}=value1
-   - test=supreme
-   - eye=tiger
   
 
