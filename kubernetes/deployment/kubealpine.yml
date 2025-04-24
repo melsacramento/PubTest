@@ -27,6 +27,8 @@ spec:
            value: mega
          - name: New-Zealand
            value: isCold
+         - name: Oblivion
+           value: remastered
 
          
 
