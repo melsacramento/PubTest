@@ -23,12 +23,7 @@ spec:
         env:
          - name: mega
            value: another-hoopla
-         - name: mitre
-           value: mega
-         - name: New-Zealand
-           value: isCold
-         - name: Oblivion
-           value: remastered
+
 
          
 
