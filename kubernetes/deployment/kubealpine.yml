@@ -25,6 +25,8 @@ spec:
            value: another-hoopla
          - name: elder
            value: oblivion
+         - name: sky
+           value: rim
 
          
 
