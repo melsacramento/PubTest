@@ -4,7 +4,7 @@ services:
   image: ${IMAGE:-nats}
   tty: true
   stdin_open: ${BOOLEAN:-true}
-  environment:
+  environments:
    - ${ENV:-environment}=value1
    - test=assd
    - zxcxzc=asddassd
