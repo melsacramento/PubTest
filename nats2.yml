@@ -2,6 +2,6 @@ services:
  app:
   image: nats
   ports:
-   - ${PORTS}=5001
+   - ${PORTS}:5001
   
 
