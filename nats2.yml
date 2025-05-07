@@ -1,5 +1,7 @@
 version: '3'
 services:
  app:
-  image: nats
+  image: ${IMAGE}
+  environment:
+   - IMAGE=nats
 
