@@ -1,8 +1,6 @@
 services:
  app:
   image: nats
-  environment:
-   - PORTS=2000
   ports:
    - ${PORTS}=5000
   
