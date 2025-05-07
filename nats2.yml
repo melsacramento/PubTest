@@ -1,7 +1,9 @@
 services:
  app:
-  image: nats
+  image: ${PORTAINER_IMAGE}
   ports:
-   - ${PORTS}:5001
+   - ${PORTAINER_PORTS}:5001
+  environment:
+   - ${PORTAINER_USER}=asd
   
 
