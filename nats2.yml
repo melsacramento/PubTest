@@ -2,7 +2,7 @@ services:
  app:
   image: ${PORTAINER_IMAGE}
   ports:
-   - ${PORTAINER_PORTS}:5001
+   - ${PORTS}:5001
   environment:
    - ${PORTAINER_USER}=asd
   
