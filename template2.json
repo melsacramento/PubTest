@@ -13,7 +13,7 @@
 	    "url": "https://github.com/xneo1/portainer_templates"
       },  
       "title": "Adguard Home",
-      "type": 3
+      "type": 1
     },
     {
       "categories": ["Tools", "Authentication"],
