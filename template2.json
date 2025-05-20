@@ -8,10 +8,6 @@
       "logo": "https://raw.githubusercontent.com/xneo1/portainer_templates/master/Images/adguard.png",
       "name": "adguardhome",
       "platform": "linux",
-      "repository": {
-	    "stackfile": "Template/Stack/adguardhome.yml",
-	    "url": "https://github.com/xneo1/portainer_templates"
-      },  
       "title": "Adguard Home",
       "type": 1
     },
