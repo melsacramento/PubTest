@@ -7,5 +7,6 @@ services:
   environment:
    - ${ENV:-environment}=value1
    - poi=asd
+   - zxc=asd
   
 
