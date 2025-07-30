@@ -4,3 +4,5 @@ services:
   image: ghcr.io/melsacramento/priv:nginx
   tty: true
   stdin_open: true
+  environment:
+   - hello=hi
