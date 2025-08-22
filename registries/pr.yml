@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  nginx-1:
+    image: ghcr.io/jamescarppe/nginx:latest
+    
+  httpd-2:
+    image: ghcr.io/melsacramento/priv:alpine
