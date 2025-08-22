@@ -4,3 +4,5 @@ services:
     
   httpd-2:
     image: ghcr.io/melsacramento/priv:alpine
+    tty: true
+    stdin_open: true
