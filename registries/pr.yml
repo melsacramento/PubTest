@@ -6,3 +6,5 @@ services:
     image: ghcr.io/melsacramento/priv:alpine
     tty: true
     stdin_open: true
+    environment:
+     - zxfc=asd
