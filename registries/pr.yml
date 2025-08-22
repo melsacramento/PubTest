@@ -10,3 +10,4 @@ services:
      - ../html:/home/html
     environment:
      - zxfc=asd
+     - dfk=cvb
