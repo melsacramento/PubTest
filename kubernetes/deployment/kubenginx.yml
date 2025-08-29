@@ -20,6 +20,8 @@ spec:
         env:
          - name: branch
            value: main
+         - name: cxz
+           value: asda
         ports:
         - containerPort: 95
 
