@@ -20,12 +20,6 @@ spec:
         env:
          - name: branch
            value: main
-         - name: some
-           value: hoopla
-         - name: zxc
-           value: xzcs
-         - name: asdasda
-           value: asda
         ports:
         - containerPort: 95
 
