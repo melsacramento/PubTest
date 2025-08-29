@@ -11,3 +11,4 @@ services:
     environment:
      - zxfc=asd
      - dfk=cvb
+     - asd=xzc
