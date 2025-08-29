@@ -10,3 +10,4 @@ services:
    - hello=hi
    - fire=bending
    - asd=zxc
+   - optty=oo
