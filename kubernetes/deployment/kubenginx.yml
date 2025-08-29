@@ -22,6 +22,8 @@ spec:
            value: main
          - name: cxz
            value: asda
+         - name: qrg
+           value: pog
         ports:
         - containerPort: 95
 
