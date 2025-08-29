@@ -7,6 +7,4 @@ services:
   environment:
    - ${ENV:-environment}=value1
    - zxc=lk
-   - erpo=xzc
-   - mk=bat
 
