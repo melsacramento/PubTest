@@ -10,3 +10,4 @@ services:
    - hello=hi
    - fire=bending
    - etrpo=vbn
+   - mk=bat
