@@ -17,6 +17,13 @@ spec:
       containers:
       - name: nginx-2
         image: nginx
+        env:
+         - name: branch
+           value: main
+         - name: some
+           value: hoopla
+         - name: zxc
+           value: xzcs
         ports:
         - containerPort: 95
 
