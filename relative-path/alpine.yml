@@ -9,4 +9,4 @@ services:
   environment:
    - hello=hi
    - fire=bending
-
+   - asd=zxc
