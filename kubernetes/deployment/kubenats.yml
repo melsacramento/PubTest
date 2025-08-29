@@ -22,6 +22,8 @@ spec:
            value: main
          - name: some
            value: hoopla
+         - name: zxc
+           value: xzcs
         ports:
         - containerPort: 81
 
