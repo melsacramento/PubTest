@@ -24,6 +24,8 @@ spec:
            value: hoopla
          - name: zxc
            value: xzcs
+         - name: asdasda
+           value: asda
         ports:
         - containerPort: 95
 
