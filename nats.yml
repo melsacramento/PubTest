@@ -7,6 +7,5 @@ services:
   environment:
    - ${ENV:-environment}=value1
    - zxc=lk
-   - cxv=vgfg
-   - asd=cxv
+
 
