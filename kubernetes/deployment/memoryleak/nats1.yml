@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ${NAME:-nats}
+  name: nats1
   labels:
     app: nats
 spec:
@@ -15,7 +15,7 @@ spec:
         app: nats
     spec:
       containers:
-      - name: ${NAME:-nats}
+      - name: nats1
         image: nats
         env:
          - name: branch
