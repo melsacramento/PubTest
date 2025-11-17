@@ -10,3 +10,4 @@ services:
    - elk=seasonx
    - sda=xcv
    - knd=hoopla
+   - kde=plasma
