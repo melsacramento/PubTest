@@ -8,3 +8,4 @@ services:
    - ${ENV:-environment}=value1
    - zxc=lk
    - elk=season
+   - deer=season
