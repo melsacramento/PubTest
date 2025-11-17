@@ -8,4 +8,3 @@ services:
    - ${ENV:-environment}=value1
    - zxc=lk
    - john=doe
-   - xzcvxz=werewr
