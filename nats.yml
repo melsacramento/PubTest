@@ -9,3 +9,4 @@ services:
    - zxc=lk
    - elk=seasonx
    - season=change
+   - snoop=dog
