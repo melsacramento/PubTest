@@ -8,5 +8,3 @@ services:
    - ${ENV:-environment}=value1
    - zxc=lk
    - elk=seasonx
-   - kde=plasma
-   - asdlksad=zsad
