@@ -9,3 +9,4 @@ services:
    - horsing=around
    - asd=zxc
    - turing=on
+   - ergo=proxy
