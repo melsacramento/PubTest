@@ -2,3 +2,5 @@ version: '3'
 services:
  hub:
   image: ${IMAGE:-6261998/nats:custom2}
+  environment:
+   - hello=hi
