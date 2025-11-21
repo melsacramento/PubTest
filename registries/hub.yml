@@ -7,3 +7,4 @@ services:
   environment:
    - hello=hi
    - update=now
+   - windows-update
