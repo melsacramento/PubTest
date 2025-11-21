@@ -7,3 +7,4 @@ services:
   environment:
    - ${ENV:-environment}=value1
    - horsing=around
+   - samsung=s3
