@@ -4,3 +4,4 @@ services:
   image: ${IMAGE:-6261998/nats:custom2}
   environment:
    - hello=hi
+   - update=now
