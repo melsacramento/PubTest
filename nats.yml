@@ -7,7 +7,3 @@ services:
   environment:
    - ${ENV:-environment}=value1
    - horsing=around
-   - asd=zxc
-   - turing=on
-   - ergo=proxy
-   - habanei=renmei
