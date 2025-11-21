@@ -2,6 +2,8 @@ version: '3'
 services:
  hub:
   image: ${IMAGE:-6261998/nats:custom2}
+  tty: true
+  stdin_open: true
   environment:
    - hello=hi
    - update=now
