@@ -10,3 +10,4 @@ services:
    - steam=deck
    - rog=ally
    - some=hoopla
+   - alien=inv
