@@ -1,6 +1,13 @@
-version: "3.9"
-
 services:
   test:
-    image: nats:latest
+    build:
+      dockerfile_inline: |
+        # Dockerfile
+        FROM ubuntu:latest
+        
+        RUN apt-get update && \
+            apt-get install -y jq && \
+            apt-get clean && \
+            rm -rf /var/lib/apt/lists/*
+
     command: ["bash", "-c", "jq --version && echo hello"]
