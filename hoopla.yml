@@ -1,7 +1,13 @@
-version: "3.9"
-
 services:
-  test-http2:
+  test:
     build:
-      context: .
-      dockerfile: Dockerfile
+      dockerfile_inline: |
+        # Dockerfile
+        FROM ubuntu:latest
+        
+        RUN apt-get update && \
+            apt-get install -y jq && \
+            apt-get clean && \
+            rm -rf /var/lib/apt/lists/*
+
+    command: ["bash", "-c", "jq --version && echo hello"]
