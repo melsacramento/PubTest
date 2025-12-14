@@ -7,4 +7,3 @@ services:
   environment:
    - ${ENV:-environment}=value1
    - horsing=around
-   - 123=infamilytree
