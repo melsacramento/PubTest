@@ -7,5 +7,3 @@ services:
   environment:
    - ${ENV:-environment}=value1
    - horsing=around
-   - sakmd=xc
-   - sad=cxv
