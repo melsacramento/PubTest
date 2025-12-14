@@ -10,3 +10,4 @@ services:
    - sofr=fdg
    - elite=soda
    - pk=cxv
+   - some=tooling
