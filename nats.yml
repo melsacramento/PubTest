@@ -8,3 +8,4 @@ services:
    - ${ENV:-environment}=value1
    - horsing=around
    - error=once
+   - house=space
