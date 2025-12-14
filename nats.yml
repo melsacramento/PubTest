@@ -7,5 +7,3 @@ services:
   environment:
    - ${ENV:-environment}=value1
    - horsing=around
-   - orphans=123
-   - sad=xzc
