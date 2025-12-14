@@ -11,4 +11,3 @@ services:
    - elite=soda
    - paris=butter
    - coal=mine
-   - pd=xc
