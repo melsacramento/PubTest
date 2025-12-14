@@ -7,8 +7,4 @@ services:
   environment:
    - ${ENV:-environment}=value1
    - horsing=around
-   - sofr=fdg
-   - elite=soda
-   - pk=cxv
-   - some=tooling
-   - asd=zxc
+   
