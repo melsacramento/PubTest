@@ -10,3 +10,4 @@ services:
    - sad=zxc
    - cat=dog
    - mince=pie
+   - pastry=meat
