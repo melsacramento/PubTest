@@ -10,3 +10,4 @@ services:
    - error=once
    - house=space
    - sad=zxc
+   - edge=update
