@@ -7,7 +7,3 @@ services:
   environment:
    - ${ENV:-environment}=value1
    - horsing=around
-   - sad=zxc
-   - cat=dog
-   - mince=pie
-   - pastry=meat
