@@ -9,4 +9,4 @@ services:
    - horsing=around
    - candle=light
    - 1=asd
-   
+   - mod=light
