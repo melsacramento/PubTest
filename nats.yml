@@ -8,6 +8,4 @@ services:
    - ${ENV:-environment}=value1
    - horsing=around
    - candle=light
-   - lake=grove
-   - la=vieve
    
