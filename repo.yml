@@ -7,3 +7,4 @@ services:
   environment:
    - hello=hi
    - sad=zxc
+   - salamat=labi
