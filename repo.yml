@@ -1,6 +1,8 @@
 version: '3'
 services:
- repo:
-  image: registry.gitlab.com/6261998/registry/alpine:latest
+ nats:
+  image: 6261998/priv:alpine
   tty: true
-  stdin_open: true
+  stidn_open: true
+  environment:
+   - hello=hi
