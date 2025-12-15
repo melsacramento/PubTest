@@ -7,3 +7,4 @@ services:
   environment:
    - hello=hi
    - zoo=topia
+   - updoot=3
