@@ -6,7 +6,3 @@ services:
   stdin_open: true
   environment:
    - hello=hi
-   - zoo=topia
-   - updoot=3
-   - updoo4=4
-   - asd=zxcasd
