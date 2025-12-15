@@ -3,6 +3,6 @@ services:
  nats:
   image: 6261998/priv:alpine
   tty: true
-  stidn_open: true
+  stdin_open: true
   environment:
    - hello=hi
