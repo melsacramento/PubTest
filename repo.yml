@@ -6,3 +6,4 @@ services:
   stdin_open: true
   environment:
    - hello=hi
+   - sad=zxc
