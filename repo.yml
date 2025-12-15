@@ -8,3 +8,4 @@ services:
    - hello=hi
    - zoo=topia
    - updoot=3
+   - updoo4=4
