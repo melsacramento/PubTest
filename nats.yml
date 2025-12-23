@@ -9,3 +9,4 @@ services:
    - horsing=around
    - hopla=master
    - goo=ga
+   - dog=treat
