@@ -8,3 +8,4 @@ services:
    - ${ENV:-environment}=value1
    - some=hoopla
    - lkj=ooi
+   - radio=performance
