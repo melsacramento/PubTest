@@ -6,7 +6,3 @@ services:
   stdin_open: ${BOOLEAN:-true}
   environment:
    - ${ENV:-environment}=value1
-   - horsing=around
-   - hopla=master
-   - goo=ga
-   - dog=treat
