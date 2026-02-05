@@ -5,4 +5,4 @@ services:
       - ./${PORTAINER_EDGE_ID}/stack.env
 
 include:
-  - path: ./${PORTAINER_EDGE_ID}/bms-modbus-services.yml
+  - path: ./${PORTAINER_EDGE_GROUP}/bms-modbus-services.yml
