@@ -1,0 +1,8 @@
+services:
+  test:
+    image: alpine
+    env_file:
+      - ./${PORTAINER_EDGE_ID}/stack.env
+
+include:
+  - path: ./${PORTAINER_EDGE_ID}/bms-modbus-services.yml
