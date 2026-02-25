@@ -6,7 +6,9 @@ services:
     tty: true
     environment:
      - ${SOMETHING:-wup}=hoopla
+     - asdsazxc=acsad
     ports:
      - ${PORTS:-87}:80
+
 
 
