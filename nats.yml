@@ -7,3 +7,5 @@ services:
   environment:
    - ${ENV:-environment}=value1
    - something=hoopla
+   - apartment=door
+   - sonic=hedgehog
