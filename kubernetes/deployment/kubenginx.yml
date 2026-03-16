@@ -25,5 +25,5 @@ spec:
          - name: qrg
            value: pog
         ports:
-        - containerPort: 95
+        - containerPort: 93
 
