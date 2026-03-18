@@ -7,3 +7,4 @@ services:
   environment:
    - ${ENV:-environment}=value1
    - something=hoopla
+   - xzcxz=asdsadas
