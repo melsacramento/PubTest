@@ -16,14 +16,7 @@ spec:
     spec:
       containers:
       - name: nginx-2
-        image: nginx:latest
-        env:
-         - name: branch
-           value: main
-         - name: cxz
-           value: asda
-         - name: qrg
-           value: pog
+        image: nats:latest
         ports:
         - containerPort: 93
 
