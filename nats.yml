@@ -6,5 +6,4 @@ services:
   stdin_open: ${BOOLEAN:-true}
   environment:
    - ${ENV:-environment}=value1
-   - something=hoopla
-   - xzcxz=asdsadas
+   - branch=hoopla
