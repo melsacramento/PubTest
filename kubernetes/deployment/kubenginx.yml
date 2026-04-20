@@ -20,6 +20,8 @@ spec:
         env:
          - name: branch
            value: main
+         - name: polling
+           value: 1min
         ports:
         - containerPort: 93
 
