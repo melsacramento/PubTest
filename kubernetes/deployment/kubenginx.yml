@@ -20,6 +20,8 @@ spec:
         env:
          - name: branch
            value: main
+         - name: earth
+           value: moon
          - name: cxz
            value: asda
          - name: qrg
