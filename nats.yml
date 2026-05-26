@@ -8,3 +8,4 @@ services:
    - ${ENV:-environment}=value1
    - invi=cible
    - adsazxzx=zxc
+   - bat=man
