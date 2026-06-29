@@ -20,10 +20,8 @@ spec:
         env:
          - name: branch
            value: main
-         - name: cxz
-           value: asda
-         - name: qrg
-           value: pog
+         - name: cypher
+           value: pol
         ports:
         - containerPort: 93
 
