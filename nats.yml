@@ -8,3 +8,4 @@ services:
    - ${ENV:-environment}=value1
    - polling=true
    - retired=penguin
+   - historical=dinosaur
