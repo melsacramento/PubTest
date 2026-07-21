@@ -1,0 +1,144 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: app-data
+  namespace: default
+  labels:
+    app: app
+    managed-by: portainer-run
+  annotations:
+    portainer-run/deploy-type: vibe
+    portainer-run/git-target-id: bfce28b9-0f8a-421f-b595-2ccdc5bc0d51
+    portainer-run/git-branch: main
+    portainer-run/git-path: kubernetes-edge-agent-standard/default/app.yaml
+    portainer-run/vibe-source-path: kubernetes-edge-agent-standard/default/app/src
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+  namespace: default
+  labels:
+    app: app
+    managed-by: portainer-run
+  annotations:
+    portainer-run/deploy-type: vibe
+    portainer-run/git-target-id: bfce28b9-0f8a-421f-b595-2ccdc5bc0d51
+    portainer-run/git-branch: main
+    portainer-run/git-path: kubernetes-edge-agent-standard/default/app.yaml
+    portainer-run/vibe-source-path: kubernetes-edge-agent-standard/default/app/src
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app
+        managed-by: portainer-run
+    spec:
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+      automountServiceAccountToken: false
+      initContainers:
+        - name: vibe-sync
+          image: alpine/git:latest
+          command:
+            - sh
+            - '-c'
+            - >-
+              git config --global http.sslVerify false && git clone --depth 1 --branch main
+              https://${GIT_USERNAME}:${GIT_TOKEN}@github.com/melsacramento/PubTest /tmp/repo && mkdir -p
+              /usr/share/nginx/html && cp -r /tmp/repo/kubernetes-edge-agent-standard/default/app/src/.
+              /usr/share/nginx/html/ && rm -rf /tmp/repo
+          resources:
+            requests:
+              cpu: 50m
+              memory: 128Mi
+            limits:
+              cpu: 250m
+              memory: 512Mi
+          volumeMounts:
+            - name: app-data
+              mountPath: /usr/share/nginx/html
+          env:
+            - name: GIT_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: app-git-credentials
+                  key: username
+            - name: GIT_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: app-git-credentials
+                  key: token
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+            seccompProfile:
+              type: RuntimeDefault
+      containers:
+        - name: app
+          image: nginxinc/nginx-unprivileged:alpine
+          command:
+            - sh
+            - '-c'
+            - nginx -g 'daemon off;'
+          workingDir: /usr/share/nginx/html
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          volumeMounts:
+            - name: app-data
+              mountPath: /usr/share/nginx/html
+          resources:
+            requests:
+              cpu: 100m
+              memory: 1Gi
+            limits:
+              cpu: '1'
+              memory: 4Gi
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+            seccompProfile:
+              type: RuntimeDefault
+      volumes:
+        - name: app-data
+          persistentVolumeClaim:
+            claimName: app-data
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app
+  namespace: default
+  labels:
+    app: app
+    managed-by: portainer-run
+  annotations:
+    portainer-run/deploy-type: vibe
+    portainer-run/git-target-id: bfce28b9-0f8a-421f-b595-2ccdc5bc0d51
+    portainer-run/git-branch: main
+    portainer-run/git-path: kubernetes-edge-agent-standard/default/app.yaml
+    portainer-run/vibe-source-path: kubernetes-edge-agent-standard/default/app/src
+spec:
+  type: LoadBalancer
+  selector:
+    app: app
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
