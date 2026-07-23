@@ -20,8 +20,8 @@ spec:
         env:
          - name: branch
            value: main
-         - name: init
-           value: burv
+         - name: lie
+           value: april
         ports:
         - containerPort: 93
 
