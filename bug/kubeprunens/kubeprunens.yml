@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: kubeprunens
+  name: kubeprune
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: prune-test-config
-  namespace: kubeprunens
+  namespace: kubeprune
 data:
   key: value
 ---
@@ -15,7 +15,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: prune-test-deployment
-  namespace: kubeprunens
+  namespace: kubeprune
 spec:
   replicas: 1
   selector:
