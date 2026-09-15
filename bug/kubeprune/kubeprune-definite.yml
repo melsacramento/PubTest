@@ -1,0 +1,181 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kubeprune
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: prune-test-sa
+  namespace: kubeprune
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prune-test-config
+  namespace: kubeprune
+data:
+  key: value
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: prune-test-secret
+  namespace: kubeprune
+type: Opaque
+stringData:
+  password: hunter2
+---
+# Opt-out via annotation — must survive being dropped from a later manifest.
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: prune-test-pvc
+  namespace: kubeprune
+  annotations:
+    io.portainer.kubernetes.application.prune: disabled
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prune-test-deployment
+  namespace: kubeprune
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prune-test
+  template:
+    metadata:
+      labels:
+        app: prune-test
+    spec:
+      serviceAccountName: prune-test-sa
+      containers:
+        - name: nginx
+          image: nginx:1.27-alpine
+          ports:
+            - containerPort: 80
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: prune-test-statefulset
+  namespace: kubeprune
+spec:
+  serviceName: prune-test-statefulset
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prune-test-sts
+  template:
+    metadata:
+      labels:
+        app: prune-test-sts
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.27-alpine
+---
+# Opt-out via label instead of annotation — the other form the ticket says must be honoured.
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: prune-test-daemonset
+  namespace: kubeprune
+  labels:
+    io.portainer.kubernetes.application.prune: disabled
+spec:
+  selector:
+    matchLabels:
+      app: prune-test-ds
+  template:
+    metadata:
+      labels:
+        app: prune-test-ds
+    spec:
+      containers:
+        - name: busybox
+          image: busybox:1.36
+          command: ["/bin/sh", "-c", "sleep 3600"]
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: prune-test-cronjob
+  namespace: kubeprune
+spec:
+  schedule: "*/5 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: hello
+              image: busybox:1.36
+              command: ["/bin/sh", "-c", "echo hello"]
+          restartPolicy: OnFailure
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prune-test-service
+  namespace: kubeprune
+spec:
+  selector:
+    app: prune-test
+  ports:
+    - port: 80
+      targetPort: 80
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: prune-test-role
+  namespace: kubeprune
+rules:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: prune-test-rolebinding
+  namespace: kubeprune
+subjects:
+  - kind: ServiceAccount
+    name: prune-test-sa
+    namespace: kubeprune
+roleRef:
+  kind: Role
+  name: prune-test-role
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: prune-test-clusterrole
+rules:
+  - apiGroups: [""]
+    resources: ["nodes"]
+    verbs: ["get", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: prune-test-clusterrolebinding
+subjects:
+  - kind: ServiceAccount
+    name: prune-test-sa
+    namespace: kubeprune
+roleRef:
+  kind: ClusterRole
+  name: prune-test-clusterrole
+  apiGroup: rbac.authorization.k8s.io
