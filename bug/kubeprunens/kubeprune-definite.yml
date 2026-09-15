@@ -32,8 +32,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: prune-test-pvc
   namespace: kubeprune
-  annotations:
-    io.portainer.kubernetes.application.prune: disabled
+#  annotations:
+#    io.portainer.kubernetes.application.prune: disabled
 spec:
   accessModes:
     - ReadWriteOnce
@@ -89,8 +89,8 @@ kind: DaemonSet
 metadata:
   name: prune-test-daemonset
   namespace: kubeprune
-  labels:
-    io.portainer.kubernetes.application.prune: disabled
+#  labels:
+#    io.portainer.kubernetes.application.prune: disabled
 spec:
   selector:
     matchLabels:
