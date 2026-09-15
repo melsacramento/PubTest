@@ -3,14 +3,6 @@ kind: Namespace
 metadata:
   name: kubeprune
 ---
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: prune-test-config
-  namespace: kubeprune
-data:
-  key: value
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
