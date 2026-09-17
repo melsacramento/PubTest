@@ -7,4 +7,4 @@ services:
   environment:
    - ${ENV:-environment}=value1
    - polling=true
-
+   - webhook=true
