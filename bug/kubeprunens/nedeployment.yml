@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubeprune-web-deployment
+  namespace: kubeprune
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kubeprune-web
+  template:
+    metadata:
+      labels:
+        app: kubeprune-web
+    spec:
+      containers:
+        - name: httpd
+          image: httpd:2.4-alpine
+          ports:
+            - containerPort: 80
