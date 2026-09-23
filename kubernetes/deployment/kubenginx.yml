@@ -23,5 +23,5 @@ spec:
          - name: lie
            value: march
         ports:
-        - containerPort: 93
+        - containerPort: 97
 
