@@ -20,6 +20,8 @@ spec:
         env:
          - name: branch
            value: main
+         - name: the
+           value: magician
         ports:
         - containerPort: 81
 
