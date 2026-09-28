@@ -22,6 +22,8 @@ spec:
            value: main
          - name: the
            value: magician
+         - name: yu
+           value: gi
         ports:
         - containerPort: 81
 
