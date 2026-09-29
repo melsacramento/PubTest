@@ -20,6 +20,8 @@ spec:
         env:
          - name: branch
            value: main
+         - name: auckland
+           value: weather
         ports:
         - containerPort: 97
 
