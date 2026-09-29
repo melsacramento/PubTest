@@ -20,10 +20,6 @@ spec:
         env:
          - name: branch
            value: main
-         - name: lie
-           value: march
-         - name: aprile
-           value: subaru
         ports:
         - containerPort: 97
 
