@@ -1,0 +1,642 @@
+# Portainer test stack: exercises most workload, config, network, storage and RBAC
+# resource types in a single namespace. Sized to run on a small local cluster
+# (kind / k3d / minikube / Docker Desktop) with a default StorageClass.
+#
+#   kubectl apply -f test-stack.yaml
+#   kubectl delete namespace portainer-test
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: portainer-test
+  labels:
+    app.kubernetes.io/part-of: portainer-test
+    pod-security.kubernetes.io/enforce: baseline
+    pod-security.kubernetes.io/warn: restricted
+---
+# ---------------------------------------------------------------- Quotas
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: portainer-test-quota
+  namespace: portainer-test
+spec:
+  hard:
+    requests.cpu: "2"
+    requests.memory: 2Gi
+    limits.cpu: "4"
+    limits.memory: 4Gi
+    persistentvolumeclaims: "10"
+    services.loadbalancers: "2"
+    pods: "30"
+---
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: portainer-test-limits
+  namespace: portainer-test
+spec:
+  limits:
+    - type: Container
+      default:
+        cpu: 200m
+        memory: 128Mi
+      defaultRequest:
+        cpu: 50m
+        memory: 64Mi
+      max:
+        cpu: "1"
+        memory: 1Gi
+---
+# ---------------------------------------------------------------- RBAC
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: web-sa
+  namespace: portainer-test
+automountServiceAccountToken: false
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: config-reader
+  namespace: portainer-test
+rules:
+  - apiGroups: [""]
+    resources: ["configmaps", "secrets"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: web-sa-config-reader
+  namespace: portainer-test
+subjects:
+  - kind: ServiceAccount
+    name: web-sa
+    namespace: portainer-test
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: config-reader
+---
+# ---------------------------------------------------------------- Config
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: web-config
+  namespace: portainer-test
+  labels:
+    app.kubernetes.io/name: web
+data:
+  APP_ENV: staging
+  LOG_LEVEL: debug
+  FEATURE_FLAGS: "search,beta-ui"
+  nginx.conf: |
+    server {
+      listen 8080;
+      location / {
+        root /usr/share/nginx/html;
+        index index.html;
+      }
+      location /healthz {
+        access_log off;
+        return 200 "ok\n";
+      }
+      location /redis {
+        default_type text/plain;
+        return 200 "redis at redis-0.redis-headless:6379\n";
+      }
+    }
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: web-secrets
+  namespace: portainer-test
+type: Opaque
+stringData:
+  DB_USER: portainer
+  DB_PASSWORD: s3cr3t-test-only
+  API_TOKEN: tok_0123456789abcdef
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: redis-auth
+  namespace: portainer-test
+type: Opaque
+stringData:
+  REDIS_PASSWORD: redis-test-only
+---
+# ---------------------------------------------------------------- Storage
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: web-content
+  namespace: portainer-test
+spec:
+  accessModes: ["ReadWriteOnce"]
+  resources:
+    requests:
+      storage: 256Mi
+---
+# ---------------------------------------------------------------- Web (Deployment)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+  namespace: portainer-test
+  labels:
+    app.kubernetes.io/name: web
+    app.kubernetes.io/component: frontend
+    app.kubernetes.io/part-of: portainer-test
+  annotations:
+    kubernetes.io/change-cause: "initial deploy"
+spec:
+  replicas: 2
+  revisionHistoryLimit: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: web
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: web
+        app.kubernetes.io/component: frontend
+        app.kubernetes.io/part-of: portainer-test
+      annotations:
+        prometheus.io/scrape: "false"
+    spec:
+      serviceAccountName: web-sa
+      terminationGracePeriodSeconds: 20
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                topologyKey: kubernetes.io/hostname
+                labelSelector:
+                  matchLabels:
+                    app.kubernetes.io/name: web
+      initContainers:
+        - name: seed-content
+          image: busybox:1.36
+          command:
+            - sh
+            - -c
+            - |
+              [ -f /content/index.html ] || \
+                echo "<h1>Portainer test</h1><p>Served by $(hostname)</p>" > /content/index.html
+          volumeMounts:
+            - name: content
+              mountPath: /content
+          resources:
+            requests: { cpu: 10m, memory: 16Mi }
+            limits: { cpu: 50m, memory: 32Mi }
+      containers:
+        - name: nginx
+          image: nginx:1.27-alpine
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: web-config
+          env:
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: web-secrets
+                  key: DB_PASSWORD
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+            - name: MEMORY_LIMIT
+              valueFrom:
+                resourceFieldRef:
+                  resource: limits.memory
+          resources:
+            requests: { cpu: 50m, memory: 64Mi }
+            limits: { cpu: 200m, memory: 128Mi }
+          startupProbe:
+            httpGet: { path: /healthz, port: http }
+            failureThreshold: 10
+            periodSeconds: 2
+          readinessProbe:
+            httpGet: { path: /healthz, port: http }
+            periodSeconds: 5
+          livenessProbe:
+            httpGet: { path: /healthz, port: http }
+            initialDelaySeconds: 10
+            periodSeconds: 15
+          lifecycle:
+            preStop:
+              exec:
+                command: ["sh", "-c", "sleep 5"]
+          volumeMounts:
+            - name: nginx-conf
+              mountPath: /etc/nginx/conf.d/default.conf
+              subPath: nginx.conf
+              readOnly: true
+            - name: content
+              mountPath: /usr/share/nginx/html
+            - name: secrets
+              mountPath: /etc/web-secrets
+              readOnly: true
+            - name: cache
+              mountPath: /var/cache/nginx
+        - name: log-sidecar
+          image: busybox:1.36
+          command: ["sh", "-c", "while true; do echo \"$(date) heartbeat from $POD_NAME\"; sleep 30; done"]
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+          resources:
+            requests: { cpu: 5m, memory: 8Mi }
+            limits: { cpu: 20m, memory: 16Mi }
+      volumes:
+        - name: nginx-conf
+          configMap:
+            name: web-config
+            items:
+              - key: nginx.conf
+                path: nginx.conf
+        - name: content
+          persistentVolumeClaim:
+            claimName: web-content
+        - name: secrets
+          secret:
+            secretName: web-secrets
+            defaultMode: 0400
+        - name: cache
+          emptyDir:
+            sizeLimit: 64Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web
+  namespace: portainer-test
+  labels:
+    app.kubernetes.io/name: web
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: web
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-nodeport
+  namespace: portainer-test
+spec:
+  type: NodePort
+  selector:
+    app.kubernetes.io/name: web
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+      nodePort: 30480
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-lb
+  namespace: portainer-test
+spec:
+  type: LoadBalancer
+  selector:
+    app.kubernetes.io/name: web
+  ports:
+    - name: http
+      port: 8081
+      targetPort: http
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: web
+  namespace: portainer-test
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  # Remove or change to match the ingress controller on your cluster (e.g. traefik).
+  ingressClassName: nginx
+  rules:
+    - host: web.portainer-test.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: web
+                port:
+                  name: http
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: web
+  namespace: portainer-test
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: web
+  minReplicas: 2
+  maxReplicas: 5
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: web
+  namespace: portainer-test
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: web
+---
+# ---------------------------------------------------------------- Redis (StatefulSet)
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-headless
+  namespace: portainer-test
+  labels:
+    app.kubernetes.io/name: redis
+spec:
+  clusterIP: None
+  publishNotReadyAddresses: true
+  selector:
+    app.kubernetes.io/name: redis
+  ports:
+    - name: redis
+      port: 6379
+      targetPort: redis
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: redis
+  namespace: portainer-test
+  labels:
+    app.kubernetes.io/name: redis
+    app.kubernetes.io/component: cache
+    app.kubernetes.io/part-of: portainer-test
+spec:
+  serviceName: redis-headless
+  replicas: 2
+  podManagementPolicy: OrderedReady
+  updateStrategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: redis
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: redis
+        app.kubernetes.io/component: cache
+        app.kubernetes.io/part-of: portainer-test
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 999
+        fsGroup: 999
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: redis
+          image: redis:7.4-alpine
+          args: ["--requirepass", "$(REDIS_PASSWORD)", "--appendonly", "yes"]
+          env:
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: redis-auth
+                  key: REDIS_PASSWORD
+          ports:
+            - name: redis
+              containerPort: 6379
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          resources:
+            requests: { cpu: 50m, memory: 64Mi }
+            limits: { cpu: 250m, memory: 256Mi }
+          readinessProbe:
+            exec:
+              command: ["sh", "-c", "redis-cli -a \"$REDIS_PASSWORD\" --no-auth-warning ping | grep PONG"]
+            periodSeconds: 5
+          livenessProbe:
+            tcpSocket:
+              port: redis
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          volumeMounts:
+            - name: data
+              mountPath: /data
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 128Mi
+---
+# ---------------------------------------------------------------- Node agent (DaemonSet)
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: node-agent
+  namespace: portainer-test
+  labels:
+    app.kubernetes.io/name: node-agent
+    app.kubernetes.io/part-of: portainer-test
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: node-agent
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: node-agent
+        app.kubernetes.io/part-of: portainer-test
+    spec:
+      tolerations:
+        - key: node-role.kubernetes.io/control-plane
+          operator: Exists
+          effect: NoSchedule
+      containers:
+        - name: agent
+          image: busybox:1.36
+          command: ["sh", "-c", "while true; do echo \"$(date) node=$NODE_NAME load=$(cat /proc/loadavg)\"; sleep 60; done"]
+          env:
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+          resources:
+            requests: { cpu: 5m, memory: 8Mi }
+            limits: { cpu: 20m, memory: 16Mi }
+---
+# ---------------------------------------------------------------- Batch
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-migrate
+  namespace: portainer-test
+  labels:
+    app.kubernetes.io/name: db-migrate
+    app.kubernetes.io/part-of: portainer-test
+spec:
+  backoffLimit: 3
+  completions: 3
+  parallelism: 2
+  ttlSecondsAfterFinished: 3600
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: db-migrate
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: migrate
+          image: busybox:1.36
+          command: ["sh", "-c", "echo \"running migration as $DB_USER\"; sleep 10; echo done"]
+          envFrom:
+            - secretRef:
+                name: web-secrets
+          resources:
+            requests: { cpu: 10m, memory: 16Mi }
+            limits: { cpu: 50m, memory: 32Mi }
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: always-fails
+  namespace: portainer-test
+  labels:
+    app.kubernetes.io/name: always-fails
+    app.kubernetes.io/part-of: portainer-test
+spec:
+  # Intentionally failing job — useful for testing error / failed states in the UI.
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 3600
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: fail
+          image: busybox:1.36
+          command: ["sh", "-c", "echo 'simulated failure' >&2; exit 1"]
+          resources:
+            requests: { cpu: 5m, memory: 8Mi }
+            limits: { cpu: 20m, memory: 16Mi }
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cache-warmer
+  namespace: portainer-test
+  labels:
+    app.kubernetes.io/name: cache-warmer
+    app.kubernetes.io/part-of: portainer-test
+spec:
+  schedule: "*/5 * * * *"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 1
+  startingDeadlineSeconds: 120
+  jobTemplate:
+    spec:
+      backoffLimit: 1
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/name: cache-warmer
+        spec:
+          restartPolicy: OnFailure
+          containers:
+            - name: warm
+              image: busybox:1.36
+              command: ["sh", "-c", "wget -qO- http://web.portainer-test.svc.cluster.local/ && echo warmed"]
+              resources:
+                requests: { cpu: 5m, memory: 8Mi }
+                limits: { cpu: 20m, memory: 16Mi }
+---
+# ---------------------------------------------------------------- Network policies
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: redis-allow-web-only
+  namespace: portainer-test
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: redis
+  policyTypes: ["Ingress"]
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: web
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: redis
+      ports:
+        - protocol: TCP
+          port: 6379
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: web-allow-http
+  namespace: portainer-test
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: web
+  policyTypes: ["Ingress"]
+  ingress:
+    - ports:
+        - protocol: TCP
+          port: 8080
