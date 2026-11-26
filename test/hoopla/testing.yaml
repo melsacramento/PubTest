@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: testing
+  namespace: hoopla
+  labels:
+    app: testing
+    managed-by: portainer-idp
+  annotations:
+    portainer-idp/git-target-id: '1'
+    portainer-idp/git-branch: main
+    portainer-idp/git-path: test/hoopla/testing.yaml
+    portainer-idp/edge-stack: 'true'
+    portainer-idp/edge-group-ids: '1'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: testing
+  template:
+    metadata:
+      labels:
+        app: testing
+        managed-by: portainer-idp
+    spec:
+      containers:
+        - name: app
+          image: nginx:latest
+          imagePullPolicy: Always
