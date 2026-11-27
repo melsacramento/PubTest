@@ -1,0 +1,198 @@
+# Traefik as the cluster's default ingress, set up as addon-e2e's seed-ingress does
+# (Traefik v3.7.14, rendered from chart traefik 41.7.1).
+#
+# Each Traefik pod writes its node's IP (NODE_IP, filled in by Kubernetes) into
+# each Ingress's status, which Portainer shows. Meant for a single-node cluster:
+# with several nodes, they overwrite each other's address.
+#
+# Apps are served at http://<name>.e2e.localhost:88/ and https://...:488/.
+# Ports 88 and 488 avoid clashing with another ingress on 80 and 443. To use
+# 80 and 443, change the two hostPort values.
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: traefik
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: traefik
+  namespace: traefik
+  labels:
+    app.kubernetes.io/name: traefik
+automountServiceAccountToken: false
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: traefik
+  labels:
+    app.kubernetes.io/name: traefik
+rules:
+  - apiGroups: [""]
+    resources: [configmaps, nodes, services]
+    verbs: [get, list, watch]
+  - apiGroups: [discovery.k8s.io]
+    resources: [endpointslices]
+    verbs: [list, watch]
+  - apiGroups: [""]
+    resources: [pods]
+    verbs: [get]
+  - apiGroups: [""]
+    resources: [secrets]
+    verbs: [get, list, watch]
+  - apiGroups: [extensions, networking.k8s.io]
+    resources: [ingressclasses, ingresses]
+    verbs: [get, list, watch]
+  - apiGroups: [extensions, networking.k8s.io]
+    resources: [ingresses/status]
+    verbs: [update]
+  - apiGroups: [""]
+    resources: [namespaces]
+    verbs: [list, watch]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: traefik
+  labels:
+    app.kubernetes.io/name: traefik
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: traefik
+subjects:
+  - kind: ServiceAccount
+    name: traefik
+    namespace: traefik
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: traefik
+  namespace: traefik
+  labels:
+    app.kubernetes.io/name: traefik
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: traefik
+  ports:
+    - {name: web, port: 80, targetPort: web, protocol: TCP}
+    - {name: websecure, port: 443, targetPort: websecure, protocol: TCP}
+---
+# One Traefik pod per node, listening on the node's ports 88 and 488.
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: traefik
+  namespace: traefik
+  labels:
+    app.kubernetes.io/name: traefik
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: traefik
+  # A new pod can't take the host ports until the old one has let go of them.
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate: {maxUnavailable: 1, maxSurge: 0}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: traefik
+    spec:
+      serviceAccountName: traefik
+      automountServiceAccountToken: true
+      terminationGracePeriodSeconds: 60
+      securityContext:
+        runAsUser: 65532
+        runAsGroup: 65532
+        runAsNonRoot: true
+        seccompProfile: {type: RuntimeDefault}
+      containers:
+        - name: traefik
+          image: docker.io/traefik:v3.7.14
+          imagePullPolicy: IfNotPresent
+          args:
+            - --entryPoints.metrics.address=:9100/tcp
+            - --entryPoints.traefik.address=:8080/tcp
+            - --entryPoints.web.address=:8000/tcp
+            - --entryPoints.websecure.address=:8443/tcp
+            - --api.dashboard=true
+            - --ping=true
+            - --metrics.prometheus=true
+            - --metrics.prometheus.entrypoint=metrics
+            # Ingresses in every namespace.
+            - --providers.kubernetesingress
+            - --providers.kubernetesingress.allowEmptyServices=true
+            - --providers.kubernetesingress.ingressendpoint.ip=$(NODE_IP)
+            - --entryPoints.websecure.http.tls=true
+            - --log.level=INFO
+          env:
+            # The node's IP, used in the args above.
+            - name: NODE_IP
+              valueFrom: {fieldRef: {fieldPath: status.hostIP}}
+            - name: POD_NAME
+              valueFrom: {fieldRef: {fieldPath: metadata.name}}
+            - name: POD_NAMESPACE
+              valueFrom: {fieldRef: {fieldPath: metadata.namespace}}
+            - {name: USER, value: traefik}
+          ports:
+            - {name: metrics, containerPort: 9100, protocol: TCP}
+            - {name: traefik, containerPort: 8080, protocol: TCP}
+            - {name: web, containerPort: 8000, hostPort: 88, protocol: TCP}
+            - {name: websecure, containerPort: 8443, hostPort: 488, protocol: TCP}
+          livenessProbe:
+            httpGet: {path: /ping, port: 8080, scheme: HTTP}
+            initialDelaySeconds: 2
+            periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 3
+          readinessProbe:
+            httpGet: {path: /ping, port: 8080, scheme: HTTP}
+            initialDelaySeconds: 2
+            periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 1
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: {drop: [ALL]}
+          volumeMounts:
+            - {name: data, mountPath: /data}
+            - {name: tmp, mountPath: /tmp}
+      volumes:
+        - {name: data, emptyDir: {}}
+        - {name: tmp, emptyDir: {}}
+---
+# The cluster's default ingress class.
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: traefik
+  annotations:
+    ingressclass.kubernetes.io/is-default-class: "true"
+  labels:
+    app.kubernetes.io/name: traefik
+spec:
+  controller: traefik.io/ingress-controller
+---
+# Where apps go.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: applications
+---
+# A host with no paths. It serves nothing: Portainer-Run reads its host as the
+# base domain and offers <app>.e2e.localhost for apps in this namespace.
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: e2e-base-domain
+  namespace: applications
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: e2e.localhost
